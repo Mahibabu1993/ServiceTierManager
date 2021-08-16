@@ -1,0 +1,12 @@
+{
+    "al.assemblyProbingPaths": [
+        "./.netpackages",
+        "C:\\Windows\\assembly",
+        "C:\\Program Files\\Microsoft Dynamics 365 Business Central\\180\\Service",
+        "C:\\Program Files (x86)\\Microsoft Dynamics 365 Business Central\\180",
+        "C:\\Program Files (x86)\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\v4.7.2"
+    ],
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al"
+}

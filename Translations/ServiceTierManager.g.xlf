@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="ServiceTierManager">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 4181767958 - Field 867554078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App Folder Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field App Folder Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 1772640682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Publisher</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Publisher - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 3149170790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Database Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 3515129596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Database Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 3118310727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Database Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 2723988120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NST Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field NST Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 1960287909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Server Instance Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 96493059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance Path</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Server Instance Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 1256520770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field App Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 1606374689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App Publisher</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field App Publisher - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 390706269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Instance Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Database Instance Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 3149170790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Database Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 3515129596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Database Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 2723988120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NST Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field NST Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 1960287909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Server Instance Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2982686039 - Field 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field User Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3506948987 - NamedType 826471483" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NAVAdminTool.ps1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit PowerShell Runner - NamedType MgmtModule</note>
+        </trans-unit>
+        <trans-unit id="Page 51831636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Application List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Instance Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 2870243283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deploy App</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action DeployApps - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Instances</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1724393750 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deploy App</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy App - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deployment Logs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1256520770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the App Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control App Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1256520770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control App Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1606374689 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the App Publisher.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control App Publisher - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1606374689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App Publisher</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control App Publisher - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3149170790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Database Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Database Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3149170790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Database Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3515129596 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Database Server.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Database Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3515129596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Database Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3192175264 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3641927271 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 2723988120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the NST Server.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control NST Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 2723988120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NST Server</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control NST Server - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 2864570709 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Service Instance Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Service Instance Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 2864570709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Instance Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Service Instance Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Type.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 129688762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the User Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control User Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 672251425 - Control 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control User Name - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

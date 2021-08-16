@@ -1,0 +1,28 @@
+{
+  "id": "7acf4861-0634-4d75-b881-fc0e1e554f99",
+  "name": "ServiceTierManager",
+  "publisher": "Mahesh Bhandari",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://ServiceTierManager.com/help/",
+  "showMyCode": true,
+  "runtime": "7.0",
+  "target": "OnPrem",
+  "features": ["TranslationFile"]
+}

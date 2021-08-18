@@ -1,6 +1,7 @@
 table 50100 "Database Instance"
 {
     DataClassification = ToBeClassified;
+    LookupPageId = "Database Instance List";
     DrillDownPageId = "Database Instance List";
 
     fields
@@ -44,7 +45,7 @@ table 50100 "Database Instance"
     }
 
     var
-        myInt: Integer;
+        AppManagement: Codeunit "App Management";
 
     trigger OnInsert()
     begin
@@ -64,6 +65,21 @@ table 50100 "Database Instance"
     trigger OnRename()
     begin
 
+    end;
+
+    procedure SelectAppandDeploy()
+    var
+        Application: Record Application;
+    begin
+        if Application.IsEmpty then begin
+            AppManagement.ImportAppFileandDeploy(Rec);
+            exit;
+        end;
+        if Page.RunModal(0, Application) = Action::LookupOK then
+            if Application."App Folder Location" = '' then
+                AppManagement.ImportAppFileandDeploy(Rec)
+            else
+                AppManagement.FindAppFileandDeploy(Rec, Application)
     end;
 
 }

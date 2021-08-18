@@ -48,14 +48,16 @@ page 50101 "Database Instance Card"
     {
         area(Processing)
         {
-            action(DeployApps)
+            action(DeployApp)
             {
                 ApplicationArea = All;
                 Caption = 'Deploy App';
 
                 trigger OnAction()
+                var
+                    AppManagement: Codeunit "App Management";
                 begin
-
+                    SelectAppandDeploy();
                 end;
             }
         }

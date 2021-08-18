@@ -113,6 +113,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Deployment Log - Field User Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 580524742 - NamedType 966007232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType AllFilesFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 580524742 - NamedType 3910898602" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import cancelled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType CancelledErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 580524742 - NamedType 743971322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType FileFilter</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 580524742 - Method 4414558 - NamedType 331638123" size-unit="char" translate="yes" xml:space="preserve">
+          <source> Cmdlet failed to run, check event log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - Method RunPS - NamedType ErrorMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3506948987 - NamedType 826471483" size-unit="char" translate="yes" xml:space="preserve">
           <source>NAVAdminTool.ps1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -133,10 +153,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control General - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 413250820 - Action 2870243283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 413250820 - Action 3467357894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deploy App</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action DeployApps - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action DeployApp - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3828933762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instances</source>

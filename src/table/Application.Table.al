@@ -1,6 +1,8 @@
 table 50101 "Application"
 {
     DataClassification = ToBeClassified;
+    LookupPageId = "Application List";
+    DrillDownPageId = "Application List";
 
     fields
     {

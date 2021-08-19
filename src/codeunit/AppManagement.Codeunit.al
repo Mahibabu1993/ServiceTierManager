@@ -58,8 +58,29 @@ codeunit 50101 "App Management"
 
     procedure FindAppFileandDeploy(DatabaseInstance: Record "Database Instance"; Application: Record Application)
     var
-        myInt: Integer;
+        FileMgt: Codeunit "File Management";
+        TempBlob: Codeunit "Temp Blob";
+        FileName: Text[500];
     begin
+        FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', FileFilter, AllFilesFilterTxt);
+
+        if FileName = '' then begin
+            Error(CancelledErr);
+        end;
+
+        FileName := TemporaryPath + FileName;
+
+        if Exists(FileName) then begin
+            Erase(FileName);
+        end;
+
+        FileMgt.BLOBExportToServerFile(TempBlob, FileName);
+
+        PublishNAVApp(DatabaseInstance."Server Instance Name", FileName, true);
+
+        SyncNAVApp(DatabaseInstance."Server Instance Name", Application.Name, '', '');
+
+        InstallNAVApp(DatabaseInstance."Server Instance Name", Application.Name, '');
 
     end;
 
@@ -81,6 +102,93 @@ codeunit 50101 "App Management"
         if SkipVerification then
             PSSession.AddParameterFlag('SkipVerification');
         RunPS('Publish-NAVApp', '');
+        PSSession.CloseWindow();
+    end;
+
+    local procedure SyncNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[100]; Mode: Text[20])
+    var
+        myInt: Integer;
+    begin
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+
+        PSSession.ImportModule();
+
+        PSSession.UpdateWindow('Sync App');
+
+        //Sync App
+        PSSession.AddCommand('Sync-NAVApp');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('Name', AppName);
+        if Version <> '' then
+            PSSession.AddParameter('Version', Version);
+        if Mode <> '' then
+            PSSession.AddParameter('Mode', Mode);
+        RunPS('Sync-NAVApp', '');
+        PSSession.CloseWindow();
+    end;
+
+    local procedure StartNAVAppDataUpgrade(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[100])
+    var
+        myInt: Integer;
+    begin
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+
+        PSSession.ImportModule();
+
+        PSSession.UpdateWindow('Start App Data Upgrade');
+
+        //Start App Data Upgrade
+        PSSession.AddCommand('Start-NAVAppDataUpgrade');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('Name', AppName);
+        if Version <> '' then
+            PSSession.AddParameter('Version', Version);
+        RunPS('Start-NAVAppDataUpgrade', '');
+        PSSession.CloseWindow();
+    end;
+
+    local procedure InstallNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[100])
+    var
+        myInt: Integer;
+    begin
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+
+        PSSession.ImportModule();
+
+        PSSession.UpdateWindow('Install App');
+
+        //Install App
+        PSSession.AddCommand('Install-NAVApp');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('Name', AppName);
+        if Version <> '' then
+            PSSession.AddParameter('Version', Version);
+        RunPS('Install-NAVApp', '');
+        PSSession.CloseWindow();
+    end;
+
+    local procedure UnpublishNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[100])
+    var
+        myInt: Integer;
+    begin
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+
+        PSSession.ImportModule();
+
+        PSSession.UpdateWindow('Unpublish App');
+
+        //Unpublish App
+        PSSession.AddCommand('Unpublish-NAVApp');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('Name', AppName);
+        if Version <> '' then
+            PSSession.AddParameter('Version', Version);
+        RunPS('Unpublish-NAVApp', '');
+        PSSession.CloseWindow();
     end;
 
     local procedure RunPS(Command: Text; Property: Text)

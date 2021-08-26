@@ -12,14 +12,6 @@ page 50101 "Database Instance Card"
             group(General)
             {
                 Caption = 'General';
-                field(Name; Name)
-                {
-                    ApplicationArea = All;
-                }
-                field("Database Type"; "Database Type")
-                {
-                    ApplicationArea = All;
-                }
                 field("NST Server"; "NST Server")
                 {
                     ApplicationArea = All;

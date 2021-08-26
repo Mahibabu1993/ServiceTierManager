@@ -15,19 +15,11 @@ page 50100 "Database Instance List"
         {
             repeater(Control1)
             {
-                field(Name; Name)
-                {
-                    ApplicationArea = All;
-                }
                 field("NST Server"; "NST Server")
                 {
                     ApplicationArea = All;
                 }
                 field("Service Instance Name"; "Server Instance Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Database Type"; "Database Type")
                 {
                     ApplicationArea = All;
                 }
@@ -55,15 +47,19 @@ page 50100 "Database Instance List"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(Refresh)
             {
+                Caption = 'Refresh Database Instances';
                 ApplicationArea = All;
 
                 trigger OnAction();
                 begin
-
+                    ServerManagement.UpdateDatabaseInstanceList();
+                    CurrPage.Update();
                 end;
             }
         }
     }
+    var
+        ServerManagement: Codeunit "Server Management";
 }

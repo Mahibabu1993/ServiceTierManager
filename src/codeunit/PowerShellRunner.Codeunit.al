@@ -138,30 +138,4 @@ codeunit 50100 "PowerShell Runner"
     begin
         Window.Close;
     end;
-
-    [Scope('OnPrem')]
-    procedure AddPowerShellCommands(Command: Text[100]; ParamName: array[10] of Text[100]; ParamText: array[10] of text[100]; ParamFlag: array[10] of Text[100])
-    var
-        noOfParameters: Integer;
-        noOfParameterFlags: Integer;
-        Counter: Integer;
-    begin
-        ImportModule();
-        AddCommand(Command);
-
-        Counter := 1;
-        if ParamName[Counter] <> '' then
-            repeat
-                AddParameter(ParamName[Counter], ParamText[Counter]);
-                Counter += 1;
-            until ParamName[Counter] = '';
-
-        Counter := 1;
-        if ParamName[Counter] <> '' then
-            repeat
-                AddParameterFlag(ParamFlag[Counter]);
-                Counter += 1;
-            until ParamFlag[Counter] = '';
-    end;
 }
-

@@ -1,4 +1,4 @@
-table 50102 "Deployment Log"
+table 50102 "PowerShell Log"
 {
     DataClassification = ToBeClassified;
 
@@ -9,47 +9,23 @@ table 50102 "Deployment Log"
             DataClassification = ToBeClassified;
             AutoIncrement = true;
         }
-        field(2; "App Publisher"; Text[100])
+        field(2; "Powershell Command"; Text[500])
         {
             DataClassification = ToBeClassified;
         }
-        field(3; "App Name"; Text[100])
+        field(3; Date; DateTime)
         {
             DataClassification = ToBeClassified;
         }
-        field(4; "Database Instance Name"; Text[100])
+        field(4; "User Name"; Text[50])
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "NST Server"; Text[100])
+        field(5; Type; Enum LogType)
         {
             DataClassification = ToBeClassified;
         }
-        field(6; "Server Instance Name"; Text[100])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(7; "Database Server"; Text[100])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(8; "Database Name"; Text[100])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(9; Date; DateTime)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(10; "User Name"; Text[50])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(11; Type; Enum LogType)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(12; Details; Blob)
+        field(6; Details; Blob)
         {
             DataClassification = ToBeClassified;
         }
@@ -87,36 +63,36 @@ table 50102 "Deployment Log"
     end;
 
     [Scope('OnPrem')]
-    procedure CreateInfoEntry(Msg: Text[250])
+    procedure CreateInfoEntry(Msg: Text[500])
     begin
         CreateEntry(Msg, false, '')
     end;
 
     [Scope('OnPrem')]
-    procedure CreateInfoEntryWithDetails(Msg: Text[250]; LogDetails: Text)
+    procedure CreateInfoEntryWithDetails(Msg: Text[500]; LogDetails: Text)
     begin
         CreateEntry(Msg, false, LogDetails)
     end;
 
     [Scope('OnPrem')]
-    procedure CreateErrorEntry(Msg: Text[250])
+    procedure CreateErrorEntry(Msg: Text[500])
     begin
         CreateEntry(Msg, true, '')
     end;
 
     [Scope('OnPrem')]
-    procedure CreateErrorEntryWithDetails(Msg: Text[250]; LogDetails: Text)
+    procedure CreateErrorEntryWithDetails(Msg: Text[500]; LogDetails: Text)
     begin
         CreateEntry(Msg, true, LogDetails)
     end;
 
-    local procedure CreateEntry(Msg: Text[250]; IsErrorEntry: Boolean; LogDetails: Text)
+    local procedure CreateEntry(Msg: Text[500]; IsErrorEntry: Boolean; LogDetails: Text)
     var
         BlobOutStream: OutStream;
     begin
         Init;
         ID := 0;
-        "App Name" := CopyStr(Msg, 1, MaxStrLen("App Name"));
+        "Powershell Command" := CopyStr(Msg, 1, MaxStrLen("Powershell Command"));
         Date := CurrentDateTime;
         "User Name" := UserId;
 
@@ -128,7 +104,7 @@ table 50102 "Deployment Log"
         else
             Type := Type::Information;
 
-        Insert
+        Insert();
     end;
 
     [Scope('OnPrem')]
@@ -140,5 +116,4 @@ table 50102 "Deployment Log"
         Details.CreateInStream(DetailsIn);
         DetailsIn.Read(DetailsText);
     end;
-
 }

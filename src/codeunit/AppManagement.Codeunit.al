@@ -7,33 +7,28 @@ codeunit 50101 "App Management"
 
     var
         PSSession: Codeunit "PowerShell Runner";
-        PSLogEntry: Record "Deployment Log";
+        PSLogEntry: Record "PowerShell Log";
         ProcessNameTxt: Text;
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
         CancelledErr: Label 'Import cancelled';
 
-    procedure GetNAVAppInfo()
+    procedure GetNAVAppInfo(ServerInstance: Text[100])
     var
-        ActiveSession: Record "Active Session";
+        myint: Integer;
     begin
-        ActiveSession.Get(ServiceInstanceId(), SessionId());
-
         PSSession.OpenWindow;
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Fetching App Information');
 
         //Get Apps Information
         PSSession.AddCommand('Get-NAVAppInfo');
-        PSSession.AddParameter('ServerInstance', ActiveSession."Server Instance Name");
+        PSSession.AddParameter('ServerInstance', ServerInstance);
         RunPS('Get App Information', 'Name');
-
     end;
 
-    procedure ImportAppFileandDeploy(DatabaseInstance: Record "Database Instance")
+    procedure ImportAppFileandDeploy(ServerInstance: Text[100])
     var
         FileMgt: Codeunit "File Management";
         TempBlob: Codeunit "Temp Blob";
@@ -53,34 +48,13 @@ codeunit 50101 "App Management"
 
         FileMgt.BLOBExportToServerFile(TempBlob, FileName);
 
-        PublishNAVApp(DatabaseInstance."Server Instance Name", FileName, true);
+        PublishNAVApp(ServerInstance, FileName, true);
     end;
 
     procedure FindAppFileandDeploy(DatabaseInstance: Record "Database Instance"; Application: Record Application)
     var
-        FileMgt: Codeunit "File Management";
-        TempBlob: Codeunit "Temp Blob";
-        FileName: Text[500];
+        myint: Integer;
     begin
-        FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', FileFilter, AllFilesFilterTxt);
-
-        if FileName = '' then begin
-            Error(CancelledErr);
-        end;
-
-        FileName := TemporaryPath + FileName;
-
-        if Exists(FileName) then begin
-            Erase(FileName);
-        end;
-
-        FileMgt.BLOBExportToServerFile(TempBlob, FileName);
-
-        PublishNAVApp(DatabaseInstance."Server Instance Name", FileName, true);
-
-        SyncNAVApp(DatabaseInstance."Server Instance Name", Application.Name, '', '');
-
-        InstallNAVApp(DatabaseInstance."Server Instance Name", Application.Name, '');
 
     end;
 
@@ -111,9 +85,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Sync App');
 
         //Sync App
@@ -134,9 +106,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Start App Data Upgrade');
 
         //Start App Data Upgrade
@@ -155,9 +125,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Install App');
 
         //Install App
@@ -176,9 +144,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Unpublish App');
 
         //Unpublish App
@@ -194,8 +160,7 @@ codeunit 50101 "App Management"
     local procedure RunPS(Command: Text; Property: Text)
     var
         PSResults: DotNet PSObjectAdapter;
-        ErrorMsg: Label ' Cmdlet failed to run, check event log'
-        ;
+        ErrorMsg: Label ' Cmdlet failed to run, check event log';
     begin
         if PSSession.InitializePSRunner then
             while PSSession.NextResult(PSResults) do

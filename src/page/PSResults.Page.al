@@ -1,7 +1,7 @@
-page 50105 "PS Results"
+page 50104 "PS Results"
 {
     PageType = CardPart;
-    SourceTable = "Deployment Log";
+    SourceTable = "PowerShell Log";
 
     layout
     {

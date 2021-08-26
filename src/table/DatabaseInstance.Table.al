@@ -6,31 +6,23 @@ table 50100 "Database Instance"
 
     fields
     {
-        field(1; Name; Code[20])
+        field(1; "NST Server"; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(2; "NST Server"; Text[100])
+        field(2; "Server Instance Name"; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(3; "Server Instance Name"; Text[100])
+        field(3; "Database Server"; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(4; "Server Instance Path"; Text[250])
+        field(4; "Database Name"; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Database Type"; Enum DatabaseType)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(6; "Database Server"; Text[100])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(7; "Database Name"; Text[100])
+        field(5; "Server Instance Path"; Text[250])
         {
             DataClassification = ToBeClassified;
         }
@@ -38,7 +30,7 @@ table 50100 "Database Instance"
 
     keys
     {
-        key(Key1; Name)
+        key(Key1; "NST Server", "Server Instance Name")
         {
             Clustered = true;
         }
@@ -72,12 +64,12 @@ table 50100 "Database Instance"
         Application: Record Application;
     begin
         if Application.IsEmpty then begin
-            AppManagement.ImportAppFileandDeploy(Rec);
+            AppManagement.ImportAppFileandDeploy("Server Instance Name");
             exit;
         end;
         if Page.RunModal(0, Application) = Action::LookupOK then
             if Application."App Folder Location" = '' then
-                AppManagement.ImportAppFileandDeploy(Rec)
+                AppManagement.ImportAppFileandDeploy("Server Instance Name")
             else
                 AppManagement.FindAppFileandDeploy(Rec, Application)
     end;

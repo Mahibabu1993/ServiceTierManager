@@ -58,10 +58,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Log - Field ID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4160142679 - Field 2996586570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Powershell Command</source>
+        <trans-unit id="Table 4160142679 - Field 2123154602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PowerShell Command</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Log - Field Powershell Command - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Log - Field PowerShell Command - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4160142679 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -87,6 +87,11 @@
           <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType FileFilter</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 580524742 - NamedType 3177175679" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server %1 already contains the application with name %2 and version %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType SameVersionErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 580524742 - Method 4414558 - NamedType 331638123" size-unit="char" translate="yes" xml:space="preserve">
           <source> Cmdlet failed to run, check event log</source>
@@ -128,50 +133,60 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action Refresh - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PowerShell Logs</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 3192175264 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 3192175264 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Date.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Date - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control Date - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 3641927271 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 3641927271 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the ID.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control ID - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control ID - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control ID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control ID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 2123154602 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the PowerShell Command.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control PowerShell Command - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 903663137 - Control 2123154602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PowerShell Command</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control PowerShell Command - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 903663137 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Type.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Type - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control Type - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 129688762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 129688762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the User Name.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control User Name - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control User Name - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 672251425 - Control 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 903663137 - Control 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Deployment Log List - Control User Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control User Name - Property Caption</note>
         </trans-unit>
       </group>
     </body>

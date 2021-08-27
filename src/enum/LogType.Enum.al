@@ -1,4 +1,4 @@
-enum 50102 "LogType"
+enum 50100 "LogType"
 {
 
     value(1; Information)

@@ -9,7 +9,7 @@ table 50102 "PowerShell Log"
             DataClassification = ToBeClassified;
             AutoIncrement = true;
         }
-        field(2; "Powershell Command"; Text[500])
+        field(2; "PowerShell Command"; Text[500])
         {
             DataClassification = ToBeClassified;
         }

@@ -12,6 +12,7 @@ codeunit 50103 "Server Management"
     var
         DatabaseInstance: Record "Database Instance";
         PSResults: DotNet PSObjectAdapter;
+        ServerInstanceName: Text[130];
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
@@ -23,7 +24,8 @@ codeunit 50103 "Server Management"
             while PSSession.NextResult(PSResults) do begin
                 DatabaseInstance.Init();
                 DatabaseInstance."NST Server" := 'localhost';
-                DatabaseInstance."Server Instance Name" := PSResults.GetProperty('ServerInstance');
+                ServerInstanceName := PSResults.GetProperty('ServerInstance');
+                DatabaseInstance."Server Instance Name" := CopyStr(ServerInstanceName, 28, StrLen(ServerInstanceName));
                 DatabaseInstance.Insert(true);
             end;
 

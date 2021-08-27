@@ -1,4 +1,4 @@
-page 50103 "Deployment Log List"
+page 50103 "PowerShell Log List"
 {
     Caption = 'PowerShell Logs';
     PageType = List;
@@ -26,6 +26,13 @@ page 50103 "Deployment Log List"
                     ApplicationArea = All;
                     Caption = 'Type';
                     Tooltip = 'Specifies the Type.';
+                }
+
+                field("PowerShell Command"; "PowerShell Command")
+                {
+                    ApplicationArea = All;
+                    Caption = 'PowerShell Command';
+                    ToolTip = 'Specifies the PowerShell Command.';
                 }
 
                 field("Date"; "Date")

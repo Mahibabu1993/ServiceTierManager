@@ -51,6 +51,10 @@ page 50100 "Database Instance List"
             {
                 Caption = 'Refresh Database Instances';
                 ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Refresh;
 
                 trigger OnAction();
                 begin

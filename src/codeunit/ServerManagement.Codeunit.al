@@ -13,7 +13,12 @@ codeunit 50103 "Server Management"
         DatabaseInstance: Record "Database Instance";
         PSResults: DotNet PSObjectAdapter;
         ServerInstanceName: Text[130];
+        ServerName: Text[100];
     begin
+        ServerName := 'localhost';
+        DatabaseInstance.SetRange("NST Server", ServerName);
+        DatabaseInstance.DeleteAll();
+
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
         PSSession.ImportModule();
@@ -22,13 +27,12 @@ codeunit 50103 "Server Management"
         PSSession.AddCommand('Get-NAVServerInstance');
         if PSSession.InitializePSRunner() then
             while PSSession.NextResult(PSResults) do begin
-                DatabaseInstance.Init();
-                DatabaseInstance."NST Server" := 'localhost';
                 ServerInstanceName := PSResults.GetProperty('ServerInstance');
+                DatabaseInstance.Init();
+                DatabaseInstance."NST Server" := ServerName;
                 DatabaseInstance."Server Instance Name" := CopyStr(ServerInstanceName, 28, StrLen(ServerInstanceName));
                 DatabaseInstance.Insert(true);
             end;
-
         PSSession.CloseWindow();
     end;
 }

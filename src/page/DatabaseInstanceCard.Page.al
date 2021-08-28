@@ -44,6 +44,10 @@ page 50101 "Database Instance Card"
             {
                 ApplicationArea = All;
                 Caption = 'Deploy App';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Process;
 
                 trigger OnAction()
                 var

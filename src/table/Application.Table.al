@@ -38,9 +38,6 @@ table 50101 "Application"
         }
     }
 
-    var
-        myInt: Integer;
-
     trigger OnInsert()
     begin
 
@@ -60,5 +57,4 @@ table 50101 "Application"
     begin
 
     end;
-
 }

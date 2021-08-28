@@ -9,15 +9,12 @@ codeunit 50101 "App Management"
         PSSession: Codeunit "PowerShell Runner";
         PSLogEntry: Record "PowerShell Log";
         Application: Record Application temporary;
-        ProcessNameTxt: Text;
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
         CancelledErr: Label 'Import cancelled';
         SameVersionErr: Label 'Server %1 already contains the application with name %2 and version %3';
 
     local procedure FindPublisherNameVersion(FileName: Text[250]; var Publisher: Text[100]; var Name: Text[100]; var Version: Text[50])
-    var
-        myInt: Integer;
     begin
         Publisher := CopyStr(FileName, 1, StrPos(FileName, '_') - 1);
         FileName := DelStr(FileName, 1, StrPos(FileName, '_'));
@@ -26,7 +23,7 @@ codeunit 50101 "App Management"
         Version := CopyStr(FileName, 1, StrPos(FileName, '.app') - 1);
     end;
 
-    procedure FindOldVersion(ServerInstance: Text[100]; var Name: Text[100]; var Version: Text[50])
+    local procedure FindOldVersion(ServerInstance: Text[100]; var Name: Text[100]; var Version: Text[50])
     var
         PSResults: DotNet PSObjectAdapter;
     begin
@@ -53,16 +50,12 @@ codeunit 50101 "App Management"
         PSSession.CloseWindow();
     end;
 
-    local procedure InsertApplicationDetails(Publisher: Text[100]; Name: Text[100]; Version: Text[50]; OldVersion: Text[50]; FileName: Text[500])
-    var
-        myInt: Integer;
+    local procedure InsertApplicationDetails(ServerInstance: Text[100]; FileName: Text[250])
     begin
         Application.Init();
-        Application.Publisher := Publisher;
-        Application.Name := Name;
-        Application.Version := Version;
-        Application."Existing Version" := OldVersion;
-        Application."App File Path" := FileName;
+        FindPublisherNameVersion(FileName, Application.Publisher, Application.Name, Application.Version);
+        FindOldVersion(ServerInstance, Application.Name, Application."Existing Version");
+        Application."App File Path" := TemporaryPath + FileName;
         Application.Insert();
     end;
 
@@ -73,8 +66,8 @@ codeunit 50101 "App Management"
         FileName: Text[500];
         Publisher: Text[100];
         Name: Text[100];
-        Version: Text[50];
-        OldVersion: Text[50];
+        Version: DotNet Version;
+        OldVersion: DotNet Version;
         PSResults: DotNet PSObjectAdapter;
     begin
         FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', FileFilter, AllFilesFilterTxt);
@@ -83,13 +76,13 @@ codeunit 50101 "App Management"
             Error(CancelledErr);
         end;
 
-        FindPublisherNameVersion(FileName, Publisher, Name, Version);
-        FindOldVersion(ServerInstance, Name, OldVersion);
-        FileName := TemporaryPath + FileName;
-        InsertApplicationDetails(Publisher, Name, Version, OldVersion, FileName);
+        InsertApplicationDetails(ServerInstance, FileName);
         if Page.RunModal(Page::"Deploy Application", Application) = Action::Yes then begin
-            if Application.Version = Application."Existing Version" then
-                Error(SameVersionErr, ServerInstance, Application.Name, Application.Version);
+            Version := Version.Version(Application.Version);
+            OldVersion := OldVersion.Version(Application."Existing Version");
+            if Version.CompareTo(OldVersion) <= 0 then
+                Error(SameVersionErr, ServerInstance, Application.Name, Application."Existing Version");
+
             if Exists(Application."App File Path") then begin
                 Erase(Application."App File Path");
             end;
@@ -106,22 +99,11 @@ codeunit 50101 "App Management"
         end;
     end;
 
-    procedure FindAppFileandDeploy(DatabaseInstance: Record "Database Instance"; Application: Record Application)
-    var
-        myint: Integer;
-    begin
-
-    end;
-
     local procedure PublishNAVApp(ServerInstance: Text[100]; Path: Text[500]; SkipVerification: Boolean)
-    var
-        myInt: Integer;
     begin
         PSSession.OpenWindow;
         PSSession.UpdateWindow('Initializing');
-
         PSSession.ImportModule();
-
         PSSession.UpdateWindow('Publishing App');
 
         //Publish Application
@@ -135,8 +117,6 @@ codeunit 50101 "App Management"
     end;
 
     local procedure SyncNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50]; Mode: Text[20])
-    var
-        myInt: Integer;
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
@@ -156,8 +136,6 @@ codeunit 50101 "App Management"
     end;
 
     local procedure StartNAVAppDataUpgrade(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50])
-    var
-        myInt: Integer;
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
@@ -175,8 +153,6 @@ codeunit 50101 "App Management"
     end;
 
     local procedure InstallNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50])
-    var
-        myInt: Integer;
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
@@ -194,8 +170,6 @@ codeunit 50101 "App Management"
     end;
 
     local procedure UnpublishNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50])
-    var
-        myInt: Integer;
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');

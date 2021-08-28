@@ -39,9 +39,6 @@ table 50102 "PowerShell Log"
         }
     }
 
-    var
-        myInt: Integer;
-
     trigger OnInsert()
     begin
 

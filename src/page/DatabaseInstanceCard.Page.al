@@ -58,7 +58,4 @@ page 50101 "Database Instance Card"
             }
         }
     }
-
-    var
-        myint: Integer;
 }

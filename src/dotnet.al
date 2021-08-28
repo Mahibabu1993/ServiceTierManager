@@ -27,5 +27,9 @@ dotnet
         type("System.Collections.Generic.IEnumerator`1"; "IEnumerator_Of_T")
         {
         }
+
+        type("System.Version"; "Version")
+        {
+        }
     }
 }

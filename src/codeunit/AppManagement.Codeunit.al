@@ -53,7 +53,7 @@ codeunit 50101 "App Management"
         PSSession.CloseWindow();
     end;
 
-    local procedure InsertApplicationDetails(Publisher: Text[100]; Name: Text[100]; Version: Text[100]; OldVersion: Text[100]; FileName: Text[500])
+    local procedure InsertApplicationDetails(Publisher: Text[100]; Name: Text[100]; Version: Text[50]; OldVersion: Text[50]; FileName: Text[500])
     var
         myInt: Integer;
     begin

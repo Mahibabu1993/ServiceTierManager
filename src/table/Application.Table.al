@@ -12,7 +12,7 @@ table 50101 "Application"
         {
             DataClassification = ToBeClassified;
         }
-        field(3; Version; Text[100])
+        field(3; Version; Text[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -20,7 +20,7 @@ table 50101 "Application"
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Existing Version"; Text[100])
+        field(5; "Existing Version"; Text[50])
         {
             DataClassification = ToBeClassified;
         }

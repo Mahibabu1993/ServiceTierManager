@@ -3,10 +3,15 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="ServiceTierManager">
     <body>
       <group id="body">
-        <trans-unit id="Table 4181767958 - Field 867554078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>App Folder Location</source>
+        <trans-unit id="Table 4181767958 - Field 3887054550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App File Path</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field App Folder Location - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field App File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 1977893707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existing Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Existing Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4181767958 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
@@ -17,6 +22,16 @@
           <source>Publisher</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Publisher - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 249619100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SkipVerification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field SkipVerification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 237762718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2990669072 - Field 3149170790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Name</source>
@@ -103,11 +118,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit PowerShell Runner - NamedType MgmtModule</note>
         </trans-unit>
-        <trans-unit id="Page 51831636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Applications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Application List - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 413250820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instance Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -132,6 +142,41 @@
           <source>Refresh Database Instances</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action Refresh - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deploy Application</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 3887054550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App File Path</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control App File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 1977893707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existing Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Existing Version - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 249619100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SkipVerification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control SkipVerification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 237762718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 903663137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PowerShell Logs</source>

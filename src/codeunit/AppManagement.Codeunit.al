@@ -8,6 +8,7 @@ codeunit 50101 "App Management"
     var
         PSSession: Codeunit "PowerShell Runner";
         PSLogEntry: Record "PowerShell Log";
+        Application: Record Application temporary;
         ProcessNameTxt: Text;
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
@@ -52,6 +53,19 @@ codeunit 50101 "App Management"
         PSSession.CloseWindow();
     end;
 
+    local procedure InsertApplicationDetails(Publisher: Text[100]; Name: Text[100]; Version: Text[100]; OldVersion: Text[100]; FileName: Text[500])
+    var
+        myInt: Integer;
+    begin
+        Application.Init();
+        Application.Publisher := Publisher;
+        Application.Name := Name;
+        Application.Version := Version;
+        Application."Existing Version" := OldVersion;
+        Application."App File Path" := FileName;
+        Application.Insert();
+    end;
+
     procedure ImportAppFileandDeploy(ServerInstance: Text[100])
     var
         FileMgt: Codeunit "File Management";
@@ -71,24 +85,25 @@ codeunit 50101 "App Management"
 
         FindPublisherNameVersion(FileName, Publisher, Name, Version);
         FindOldVersion(ServerInstance, Name, OldVersion);
-        if Version = OldVersion then
-            Error(SameVersionErr, ServerInstance, Name, Version);
-
         FileName := TemporaryPath + FileName;
+        InsertApplicationDetails(Publisher, Name, Version, OldVersion, FileName);
+        if Page.RunModal(Page::"Deploy Application", Application) = Action::Yes then begin
+            if Application.Version = Application."Existing Version" then
+                Error(SameVersionErr, ServerInstance, Application.Name, Application.Version);
+            if Exists(Application."App File Path") then begin
+                Erase(Application."App File Path");
+            end;
 
-        if Exists(FileName) then begin
-            Erase(FileName);
+            FileMgt.BLOBExportToServerFile(TempBlob, Application."App File Path");
+
+            PublishNAVApp(ServerInstance, Application."App File Path", Application.SkipVerification);
+            SyncNAVApp(ServerInstance, Application.Name, Application.Version, '');
+            if Application."Existing Version" <> '' then begin
+                StartNAVAppDataUpgrade(ServerInstance, Application.Name, Application.Version);
+                UnpublishNAVApp(ServerInstance, Application.Name, Application."Existing Version");
+            end else
+                InstallNAVApp(ServerInstance, Application.Name, Application.Version);
         end;
-
-        FileMgt.BLOBExportToServerFile(TempBlob, FileName);
-
-        PublishNAVApp(ServerInstance, FileName, true);
-        SyncNAVApp(ServerInstance, Name, Version, '');
-        if OldVersion <> '' then begin
-            StartNAVAppDataUpgrade(ServerInstance, Name, Version);
-            UnpublishNAVApp(ServerInstance, Name, Version);
-        end else
-            InstallNAVApp(ServerInstance, Name, Version);
     end;
 
     procedure FindAppFileandDeploy(DatabaseInstance: Record "Database Instance"; Application: Record Application)

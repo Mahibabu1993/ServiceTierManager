@@ -53,7 +53,7 @@ page 50101 "Database Instance Card"
                 var
                     AppManagement: Codeunit "App Management";
                 begin
-                    SelectAppandDeploy();
+                    AppManagement.ImportAppFileandDeploy("Server Instance Name");
                 end;
             }
         }

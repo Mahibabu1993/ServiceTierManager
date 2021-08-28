@@ -58,20 +58,4 @@ table 50100 "Database Instance"
     begin
 
     end;
-
-    procedure SelectAppandDeploy()
-    var
-        Application: Record Application;
-    begin
-        if Application.IsEmpty then begin
-            AppManagement.ImportAppFileandDeploy("Server Instance Name");
-            exit;
-        end;
-        if Page.RunModal(0, Application) = Action::LookupOK then
-            if Application."App Folder Location" = '' then
-                AppManagement.ImportAppFileandDeploy("Server Instance Name")
-            else
-                AppManagement.FindAppFileandDeploy(Rec, Application)
-    end;
-
 }

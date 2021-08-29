@@ -8,7 +8,7 @@ codeunit 50101 "App Management"
     var
         PSSession: Codeunit "PowerShell Runner";
         PSLogEntry: Record "PowerShell Log";
-        Application: Record Application temporary;
+        TempApplication: Record Application temporary;
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
         CancelledErr: Label 'Import cancelled';
@@ -50,13 +50,13 @@ codeunit 50101 "App Management"
         PSSession.CloseWindow();
     end;
 
-    local procedure InsertApplicationDetails(ServerInstance: Text[100]; FileName: Text[250])
+    local procedure InsertTempApplicationDetails(ServerInstance: Text[100]; FileName: Text[250])
     begin
-        Application.Init();
-        FindPublisherNameVersion(FileName, Application.Publisher, Application.Name, Application.Version);
-        FindOldVersion(ServerInstance, Application.Name, Application."Existing Version");
-        Application."App File Path" := TemporaryPath + FileName;
-        Application.Insert();
+        TempApplication.Init();
+        FindPublisherNameVersion(FileName, TempApplication.Publisher, TempApplication.Name, TempApplication.Version);
+        FindOldVersion(ServerInstance, TempApplication.Name, TempApplication."Existing Version");
+        TempApplication."App File Path" := TemporaryPath + FileName;
+        TempApplication.Insert();
     end;
 
     procedure ImportAppFileandDeploy(ServerInstance: Text[100])
@@ -76,26 +76,26 @@ codeunit 50101 "App Management"
             Error(CancelledErr);
         end;
 
-        InsertApplicationDetails(ServerInstance, FileName);
-        if Page.RunModal(Page::"Deploy Application", Application) = Action::Yes then begin
-            Version := Version.Version(Application.Version);
-            OldVersion := OldVersion.Version(Application."Existing Version");
+        InsertTempApplicationDetails(ServerInstance, FileName);
+        if Page.RunModal(Page::"Deploy Application", TempApplication) = Action::Yes then begin
+            Version := Version.Version(TempApplication.Version);
+            OldVersion := OldVersion.Version(TempApplication."Existing Version");
             if Version.CompareTo(OldVersion) <= 0 then
-                Error(SameVersionErr, ServerInstance, Application.Name, Application."Existing Version");
+                Error(SameVersionErr, ServerInstance, TempApplication.Name, TempApplication."Existing Version");
 
-            if Exists(Application."App File Path") then begin
-                Erase(Application."App File Path");
+            if Exists(TempApplication."App File Path") then begin
+                Erase(TempApplication."App File Path");
             end;
 
-            FileMgt.BLOBExportToServerFile(TempBlob, Application."App File Path");
+            FileMgt.BLOBExportToServerFile(TempBlob, TempApplication."App File Path");
 
-            PublishNAVApp(ServerInstance, Application."App File Path", Application.SkipVerification);
-            SyncNAVApp(ServerInstance, Application.Name, Application.Version, '');
-            if Application."Existing Version" <> '' then begin
-                StartNAVAppDataUpgrade(ServerInstance, Application.Name, Application.Version);
-                UnpublishNAVApp(ServerInstance, Application.Name, Application."Existing Version");
+            PublishNAVApp(ServerInstance, TempApplication."App File Path", TempApplication.SkipVerification);
+            SyncNAVApp(ServerInstance, TempApplication.Name, TempApplication.Version, '');
+            if TempApplication."Existing Version" <> '' then begin
+                StartNAVAppDataUpgrade(ServerInstance, TempApplication.Name, TempApplication.Version);
+                UnpublishNAVApp(ServerInstance, TempApplication.Name, TempApplication."Existing Version");
             end else
-                InstallNAVApp(ServerInstance, Application.Name, Application.Version);
+                InstallNAVApp(ServerInstance, TempApplication.Name, TempApplication.Version);
         end;
     end;
 

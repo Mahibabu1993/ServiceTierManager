@@ -89,7 +89,7 @@ table 50102 "PowerShell Log"
     begin
         Init;
         ID := 0;
-        "Powershell Command" := CopyStr(Msg, 1, MaxStrLen("Powershell Command"));
+        "Powershell Command" := Msg;
         Date := CurrentDateTime;
         "User Name" := UserId;
 

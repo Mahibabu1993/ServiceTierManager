@@ -186,7 +186,7 @@ codeunit 50101 "App Management"
         PSSession.CloseWindow();
     end;
 
-    local procedure RunPS(Command: Text; Property: Text)
+    local procedure RunPS(Command: Text[500]; Property: Text)
     var
         PSResults: DotNet PSObjectAdapter;
         ErrorMsg: Label ' Cmdlet failed to run, check event log';

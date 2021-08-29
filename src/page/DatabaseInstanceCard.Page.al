@@ -56,6 +56,22 @@ page 50101 "Database Instance Card"
                     AppManagement.ImportAppFileandDeploy("Server Instance Name");
                 end;
             }
+            action(ImportLicense)
+            {
+                ApplicationArea = All;
+                Caption = 'Import License';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Import;
+
+                trigger OnAction()
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
+                begin
+                    ServiceTierManagement.ImportLicense("Server Instance Name");
+                end;
+            }
         }
     }
 }

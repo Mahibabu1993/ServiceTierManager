@@ -58,12 +58,12 @@ page 50100 "Database Instance List"
 
                 trigger OnAction();
                 begin
-                    ServerManagement.UpdateDatabaseInstanceList();
+                    ServiceTierManagement.UpdateDatabaseInstanceList();
                     CurrPage.Update();
                 end;
             }
         }
     }
     var
-        ServerManagement: Codeunit "Server Management";
+        ServiceTierManagement: Codeunit "Service Tier Management";
 }

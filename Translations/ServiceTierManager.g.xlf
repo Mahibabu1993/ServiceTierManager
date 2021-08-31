@@ -128,16 +128,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType FileFilter</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2029123880 - NamedType 3099185013" size-unit="char" translate="yes" xml:space="preserve">
-          <source>License Import Failed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType ImportFailedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2029123880 - NamedType 2677121081" size-unit="char" translate="yes" xml:space="preserve">
-          <source>License Import Successful</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType ImportSuccessMsg</note>
-        </trans-unit>
         <trans-unit id="Codeunit 2029123880 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operation cancelled by user.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -147,6 +137,21 @@
           <source>Database Instance Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - NamedType 3099185013" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License Import Failed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - NamedType ImportFailedErr</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - NamedType 2677121081" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License Import Successful</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - NamedType ImportSuccessMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - NamedType 2433544774" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance %1 cannot be restarted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - NamedType RestartErr</note>
         </trans-unit>
         <trans-unit id="Page 413250820 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
@@ -162,6 +167,11 @@
           <source>Import License</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action ImportLicense - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 3808743301 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restart Server Instance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action RestartServerInstance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3828933762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instances</source>

@@ -10,8 +10,6 @@ codeunit 50103 "Service Tier Management"
         Txt001: Label 'Operation cancelled by user.';
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'License (*.flf)|*.flf|All Files (*.*)|*.*';
-        ImportSuccessMsg: Label 'License Import Successful';
-        ImportFailedErr: Label 'License Import Failed';
 
     procedure UpdateDatabaseInstanceList()
     var
@@ -41,7 +39,7 @@ codeunit 50103 "Service Tier Management"
         PSSession.CloseWindow();
     end;
 
-    procedure ImportLicense(ServerInstance: Text[100])
+    procedure ImportLicense(ServerInstance: Text[100]): Boolean
     var
         TempBlob: Codeunit "Temp Blob";
         FileMgt: Codeunit "File Management";
@@ -75,10 +73,29 @@ codeunit 50103 "Service Tier Management"
         if PSSession.InitializePSRunner() then
             Imported := PSSession.NextResult(PSResults);
         PSSession.CloseWindow();
+        exit(Imported);
+    end;
 
-        if Imported then
-            Message(ImportSuccessMsg)
-        else
-            Error(ImportFailedErr);
+    procedure RestartServerInstance(ServerInstance: Text[100]): Boolean
+    var
+        ActiveSession: Record "Active Session";
+        Restarted: Boolean;
+        PSResults: DotNet PSObjectAdapter;
+    begin
+        ActiveSession.Get(ServiceInstanceId(), SessionId());
+        if ActiveSession."Server Instance Name" = ServerInstance then
+            exit(false);
+
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+        PSSession.ImportModule();
+        PSSession.UpdateWindow(StrSubstNo('Restart Server Instance %1', ServerInstance));
+
+        PSSession.AddCommand('Restart-NAVServerInstance');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        if PSSession.InitializePSRunner() then
+            Restarted := PSSession.NextResult(PSResults);
+        PSSession.CloseWindow();
+        exit(Restarted);
     end;
 }

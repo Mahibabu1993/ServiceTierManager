@@ -50,8 +50,6 @@ page 50101 "Database Instance Card"
                 Image = Process;
 
                 trigger OnAction()
-                var
-                    AppManagement: Codeunit "App Management";
                 begin
                     AppManagement.ImportAppFileandDeploy("Server Instance Name");
                 end;
@@ -66,12 +64,34 @@ page 50101 "Database Instance Card"
                 Image = Import;
 
                 trigger OnAction()
-                var
-                    ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
-                    ServiceTierManagement.ImportLicense("Server Instance Name");
+                    if ServiceTierManagement.ImportLicense("Server Instance Name") then
+                        Message(ImportSuccessMsg)
+                    else
+                        Error(ImportFailedErr);
+                end;
+            }
+            action(RestartServerInstance)
+            {
+                ApplicationArea = All;
+                Caption = 'Restart Server Instance';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = ResetStatus;
+
+                trigger OnAction()
+                begin
+                    if not ServiceTierManagement.RestartServerInstance("Server Instance Name") then
+                        Error(RestartErr, "Server Instance Name");
                 end;
             }
         }
     }
+    var
+        AppManagement: Codeunit "App Management";
+        ServiceTierManagement: Codeunit "Service Tier Management";
+        ImportSuccessMsg: Label 'License Import Successful';
+        ImportFailedErr: Label 'License Import Failed';
+        RestartErr: Label 'Server Instance %1 cannot be restarted';
 }

@@ -78,10 +78,12 @@ codeunit 50101 "App Management"
 
         InsertTempApplicationDetails(ServerInstance, FileName);
         if Page.RunModal(Page::"Deploy Application", TempApplication) = Action::Yes then begin
-            Version := Version.Version(TempApplication.Version);
-            OldVersion := OldVersion.Version(TempApplication."Existing Version");
-            if Version.CompareTo(OldVersion) <= 0 then
-                Error(SameVersionErr, ServerInstance, TempApplication.Name, TempApplication."Existing Version");
+            if TempApplication."Existing Version" <> '' then begin
+                Version := Version.Version(TempApplication.Version);
+                OldVersion := OldVersion.Version(TempApplication."Existing Version");
+                if Version.CompareTo(OldVersion) <= 0 then
+                    Error(SameVersionErr, ServerInstance, TempApplication.Name, TempApplication."Existing Version");
+            end;
 
             if Exists(TempApplication."App File Path") then begin
                 Erase(TempApplication."App File Path");

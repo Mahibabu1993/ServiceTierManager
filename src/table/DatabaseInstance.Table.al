@@ -1,8 +1,11 @@
+/// <summary>
+/// Table Database Instance (ID 50100).
+/// </summary>
 table 50100 "Database Instance"
 {
     DataClassification = ToBeClassified;
-    LookupPageId = "Database Instance List";
     DrillDownPageId = "Database Instance List";
+    LookupPageId = "Database Instance List";
 
     fields
     {
@@ -26,6 +29,17 @@ table 50100 "Database Instance"
         {
             DataClassification = ToBeClassified;
         }
+
+        field(6; State; Text[20])
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(7; Version; Text[50])
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
     }
 
     keys
@@ -36,8 +50,6 @@ table 50100 "Database Instance"
         }
     }
 
-    var
-        AppManagement: Codeunit "App Management";
 
     trigger OnInsert()
     begin

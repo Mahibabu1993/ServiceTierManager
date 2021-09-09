@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Application (ID 50101).
+/// </summary>
 table 50101 "Application"
 {
     DataClassification = ToBeClassified;

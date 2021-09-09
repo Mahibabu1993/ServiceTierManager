@@ -1,3 +1,6 @@
+/// <summary>
+/// Page Database Instance Card (ID 50101).
+/// </summary>
 page 50101 "Database Instance Card"
 {
     Caption = 'Database Instance Card';
@@ -15,22 +18,37 @@ page 50101 "Database Instance Card"
                 field("NST Server"; "NST Server")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the NST Server field';
                 }
                 field("Service Instance Name"; "Server Instance Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Server Instance Name field';
+                }
+                field(State; State)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the State';
+                }
+                field(Version; Version)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Version';
                 }
                 field("Service Instance Path"; "Server Instance Path")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Server Instance Path field';
                 }
                 field("Database Server"; "Database Server")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Database Server field';
                 }
                 field("Database Name"; "Database Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Database Name field';
                 }
             }
         }
@@ -44,10 +62,11 @@ page 50101 "Database Instance Card"
             {
                 ApplicationArea = All;
                 Caption = 'Deploy App';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Process;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Executes the Deploy App action';
 
                 trigger OnAction()
                 begin
@@ -58,10 +77,11 @@ page 50101 "Database Instance Card"
             {
                 ApplicationArea = All;
                 Caption = 'Import License';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Import;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Executes the Import License action';
 
                 trigger OnAction()
                 begin
@@ -75,10 +95,11 @@ page 50101 "Database Instance Card"
             {
                 ApplicationArea = All;
                 Caption = 'Restart Server Instance';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = ResetStatus;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Executes the Restart Server Instance action';
 
                 trigger OnAction()
                 begin
@@ -91,7 +112,7 @@ page 50101 "Database Instance Card"
     var
         AppManagement: Codeunit "App Management";
         ServiceTierManagement: Codeunit "Service Tier Management";
-        ImportSuccessMsg: Label 'License Import Successful';
         ImportFailedErr: Label 'License Import Failed';
+        ImportSuccessMsg: Label 'License Import Successful';
         RestartErr: Label 'Server Instance %1 cannot be restarted';
 }

@@ -16,26 +16,31 @@ page 50102 "Deploy Application"
             {
                 ApplicationArea = All;
                 Caption = 'Name';
+                ToolTip = 'Specifies the value of the Name field';
             }
             field(Version; Version)
             {
                 ApplicationArea = All;
                 Caption = 'Version';
+                ToolTip = 'Specifies the value of the Version field';
             }
             field(SkipVerification; SkipVerification)
             {
                 ApplicationArea = All;
                 Caption = 'SkipVerification';
+                ToolTip = 'Specifies the value of the SkipVerification field';
             }
             field("Existing Version"; "Existing Version")
             {
                 ApplicationArea = All;
                 Caption = 'Existing Version';
+                ToolTip = 'Specifies the value of the Existing Version field';
             }
             field("App File Path"; "App File Path")
             {
                 ApplicationArea = All;
                 Caption = 'App File Path';
+                ToolTip = 'Specifies the value of the App File Path field';
             }
         }
     }

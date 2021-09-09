@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PowerShell Log (ID 50102).
+/// </summary>
 table 50102 "PowerShell Log"
 {
     DataClassification = ToBeClassified;
@@ -6,8 +9,8 @@ table 50102 "PowerShell Log"
     {
         field(1; ID; Integer)
         {
-            DataClassification = ToBeClassified;
             AutoIncrement = true;
+            DataClassification = ToBeClassified;
         }
         field(2; "PowerShell Command"; Text[500])
         {
@@ -59,35 +62,67 @@ table 50102 "PowerShell Log"
 
     end;
 
-    [Scope('OnPrem')]
-    procedure CreateInfoEntry(Msg: Text[500])
-    begin
-        CreateEntry(Msg, false, '')
-    end;
-
-    [Scope('OnPrem')]
-    procedure CreateInfoEntryWithDetails(Msg: Text[500]; LogDetails: Text)
-    begin
-        CreateEntry(Msg, false, LogDetails)
-    end;
-
+    /// <summary>
+    /// CreateErrorEntry.
+    /// </summary>
+    /// <param name="Msg">Text[500].</param>
     [Scope('OnPrem')]
     procedure CreateErrorEntry(Msg: Text[500])
     begin
         CreateEntry(Msg, true, '')
     end;
 
+    /// <summary>
+    /// CreateErrorEntryWithDetails.
+    /// </summary>
+    /// <param name="Msg">Text[500].</param>
+    /// <param name="LogDetails">Text.</param>
     [Scope('OnPrem')]
     procedure CreateErrorEntryWithDetails(Msg: Text[500]; LogDetails: Text)
     begin
         CreateEntry(Msg, true, LogDetails)
     end;
 
+    /// <summary>
+    /// CreateInfoEntry.
+    /// </summary>
+    /// <param name="Msg">Text[500].</param>
+    [Scope('OnPrem')]
+    procedure CreateInfoEntry(Msg: Text[500])
+    begin
+        CreateEntry(Msg, false, '')
+    end;
+
+    /// <summary>
+    /// CreateInfoEntryWithDetails.
+    /// </summary>
+    /// <param name="Msg">Text[500].</param>
+    /// <param name="LogDetails">Text.</param>
+    [Scope('OnPrem')]
+    procedure CreateInfoEntryWithDetails(Msg: Text[500]; LogDetails: Text)
+    begin
+        CreateEntry(Msg, false, LogDetails)
+    end;
+
+    /// <summary>
+    /// GetDetailsText.
+    /// </summary>
+    /// <returns>Return variable DetailsText of type Text.</returns>
+    [Scope('OnPrem')]
+    procedure GetDetailsText() DetailsText: Text
+    var
+        DetailsIn: InStream;
+    begin
+        CalcFields(Details);
+        Details.CreateInStream(DetailsIn);
+        DetailsIn.Read(DetailsText);
+    end;
+
     local procedure CreateEntry(Msg: Text[500]; IsErrorEntry: Boolean; LogDetails: Text)
     var
         BlobOutStream: OutStream;
     begin
-        Init;
+        Init();
         ID := 0;
         "Powershell Command" := Msg;
         Date := CurrentDateTime;
@@ -102,15 +137,5 @@ table 50102 "PowerShell Log"
             Type := Type::Information;
 
         Insert();
-    end;
-
-    [Scope('OnPrem')]
-    procedure GetDetailsText() DetailsText: Text
-    var
-        DetailsIn: InStream;
-    begin
-        CalcFields(Details);
-        Details.CreateInStream(DetailsIn);
-        DetailsIn.Read(DetailsText);
     end;
 }

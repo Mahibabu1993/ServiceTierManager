@@ -1,10 +1,12 @@
+/// <summary>
+/// Page Database Instance List (ID 50100).
+/// </summary>
 page 50100 "Database Instance List"
 {
     ApplicationArea = All;
     Caption = 'Database Instances';
-    Editable = false;
-    PageType = List;
     CardPageId = "Database Instance Card";
+    PageType = List;
     RefreshOnActivate = true;
     SourceTable = "Database Instance";
     UsageCategory = Lists;
@@ -18,22 +20,38 @@ page 50100 "Database Instance List"
                 field("NST Server"; "NST Server")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the NST Server field';
                 }
                 field("Service Instance Name"; "Server Instance Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Server Instance Name field';
+                }
+
+                field(State; State)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the State';
+                }
+                field(Version; Version)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Version';
                 }
                 field("Database Server"; "Database Server")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Database Server field';
                 }
                 field("Database Name"; "Database Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Database Name field';
                 }
                 field("Service Instance Path"; "Server Instance Path")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Server Instance Path field';
                 }
             }
         }
@@ -55,6 +73,7 @@ page 50100 "Database Instance List"
                 PromotedIsBig = true;
                 PromotedCategory = Process;
                 Image = Refresh;
+                ToolTip = 'Executes the Refresh Database Instances action';
 
                 trigger OnAction();
                 begin

@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit PowerShell Runner (ID 50100).
+/// </summary>
 codeunit 50100 "PowerShell Runner"
 {
 
@@ -14,19 +17,141 @@ codeunit 50100 "PowerShell Runner"
         MgmtModule: Label 'NAVAdminTool.ps1';
         Window: Dialog;
 
+    /// <summary>
+    /// AddCommand.
+    /// </summary>
+    /// <param name="Command">Text.</param>
+    [Scope('OnPrem')]
+    procedure AddCommand(Command: Text)
+    begin
+        CreatePSRunner();
+        PSRunner.AddCommand(Command);
+    end;
+
+    /// <summary>
+    /// AddParameter.
+    /// </summary>
+    /// <param name="Name">Text.</param>
+    /// <param name="Value">Variant.</param>
+    [Scope('OnPrem')]
+    procedure AddParameter(Name: Text; Value: Variant)
+    begin
+        CreatePSRunner();
+        PSRunner.AddParameter(Name, Value);
+    end;
+
+    /// <summary>
+    /// AddParameterFlag.
+    /// </summary>
+    /// <param name="Name">Text.</param>
+    [Scope('OnPrem')]
+    procedure AddParameterFlag(Name: Text)
+    begin
+        CreatePSRunner();
+        PSRunner.AddParameter(Name);
+    end;
+
+    /// <summary>
+    /// CloseWindow.
+    /// </summary>
+    [Scope('OnPrem')]
+    procedure CloseWindow()
+    begin
+        Window.Close();
+    end;
+
+    /// <summary>
+    /// ImportModule.
+    /// </summary>
+    [Scope('OnPrem')]
+    procedure ImportModule()
+    begin
+        CreatePSRunner();
+        PSRunner.ImportModule(PSModules());
+    end;
+
+    /// <summary>
+    /// InitializePSRunner.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     [Scope('OnPrem')]
     procedure InitializePSRunner(): Boolean
     begin
         //Initialize ps session
-        CreatePSRunner;
+        CreatePSRunner();
 
-        if not Invoke then
-            exit(not PSRunnerHadErrors);
+        if not Invoke() then
+            exit(not PSRunnerHadErrors());
 
         GetResultEnumerator(ResultsEnumerator);
         GetErrorEnumerator(ErrorEnumerator);
 
-        exit(not PSRunnerHadErrors);
+        exit(not PSRunnerHadErrors());
+    end;
+
+    /// <summary>
+    /// Invoke.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
+    [Scope('OnPrem')]
+    procedure Invoke(): Boolean
+    begin
+        PSRunner.BeginInvoke();
+        repeat
+            Sleep(2000);
+        //(to be resilient against SQL connection drops)
+        until PSRunner.IsCompleted;
+        exit(not PSRunnerHadErrors());
+    end;
+
+    /// <summary>
+    /// NextResult.
+    /// </summary>
+    /// <param name="ReturnObject">VAR DotNet PSObjectAdapter.</param>
+    /// <returns>Return value of type Boolean.</returns>
+    [Scope('OnPrem')]
+    procedure NextResult(var ReturnObject: DotNet PSObjectAdapter): Boolean
+    begin
+        if IsNull(ResultsEnumerator) then
+            exit(false);
+
+        if ResultsEnumerator.MoveNext() then begin
+            ReturnObject := ReturnObject.PSObjectAdapter();
+            ReturnObject.PSObject := ResultsEnumerator.Current;
+            exit(true)
+        end;
+        exit(false)
+    end;
+
+    /// <summary>
+    /// OpenWindow.
+    /// </summary>
+    [Scope('OnPrem')]
+    procedure OpenWindow()
+    begin
+        Window.Open(
+          'Running Powershell                \' +
+          'Status #1##################################');
+    end;
+
+    /// <summary>
+    /// PSModules.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
+    [Scope('OnPrem')]
+    procedure PSModules(): Text
+    begin
+        exit(ApplicationPath + MgmtModule);
+    end;
+
+    /// <summary>
+    /// UpdateWindow.
+    /// </summary>
+    /// <param name="Status">Text.</param>
+    [Scope('OnPrem')]
+    procedure UpdateWindow(Status: Text)
+    begin
+        Window.Update(1, Status);
     end;
 
     local procedure CreatePSRunner(): Boolean
@@ -36,80 +161,21 @@ codeunit 50100 "PowerShell Runner"
         if not IsNull(PSRunner) then
             exit(false);
 
-        PSRunner := PSRunner.CreateInSandbox;
+        PSRunner := PSRunner.CreateInSandbox();
         PSRunner.WriteEventOnError := true;
 
         Created := true;
         exit(Created);
     end;
 
-    [Scope('OnPrem')]
-    procedure AddCommand(Command: Text)
+    local procedure GetErrorEnumerator(Enumerator: DotNet IEnumerator)
     begin
-        CreatePSRunner;
-        PSRunner.AddCommand(Command);
-    end;
-
-    [Scope('OnPrem')]
-    procedure AddParameter(Name: Text; Value: Variant)
-    begin
-        CreatePSRunner;
-        PSRunner.AddParameter(Name, Value);
-    end;
-
-    [Scope('OnPrem')]
-    procedure AddParameterFlag(Name: Text)
-    begin
-        CreatePSRunner;
-        PSRunner.AddParameter(Name);
-    end;
-
-    [Scope('OnPrem')]
-    procedure Invoke(): Boolean
-    begin
-        PSRunner.BeginInvoke;
-        repeat
-            Sleep(2000);
-        //(to be resilient against SQL connection drops)
-        until PSRunner.IsCompleted;
-        exit(not PSRunnerHadErrors);
+        Enumerator := PSRunner.Errors.GetEnumerator();
     end;
 
     local procedure GetResultEnumerator(Enumerator: DotNet IEnumerator)
     begin
-        Enumerator := PSRunner.Results.GetEnumerator;
-    end;
-
-    [Scope('OnPrem')]
-    procedure NextResult(var ReturnObject: DotNet PSObjectAdapter): Boolean
-    begin
-        if IsNull(ResultsEnumerator) then
-            exit(false);
-
-        if ResultsEnumerator.MoveNext then begin
-            ReturnObject := ReturnObject.PSObjectAdapter;
-            ReturnObject.PSObject := ResultsEnumerator.Current;
-            exit(true)
-        end;
-        exit(false)
-    end;
-
-    [Scope('OnPrem')]
-    procedure ImportModule()
-    begin
-        CreatePSRunner;
-        PSRunner.ImportModule(PSModules);
-    end;
-
-    local procedure GetErrorEnumerator(Enumerator: DotNet IEnumerator)
-    begin
-        Enumerator := PSRunner.Errors.GetEnumerator;
-    end;
-
-    [Scope('OnPrem')]
-    procedure PSModules(): Text
-    begin
-        exit(ApplicationPath + MgmtModule);
+        Enumerator := PSRunner.Results.GetEnumerator();
     end;
 
     local procedure PSRunnerHadErrors(): Boolean
@@ -117,25 +183,5 @@ codeunit 50100 "PowerShell Runner"
         if PSRunner.HadErrors then
             PSRunner.WriteEventOnError(true);
         exit(PSRunner.HadErrors);
-    end;
-
-    [Scope('OnPrem')]
-    procedure OpenWindow()
-    begin
-        Window.Open(
-          'Running Powershell                \' +
-          'Status #1##################################');
-    end;
-
-    [Scope('OnPrem')]
-    procedure UpdateWindow(Status: Text)
-    begin
-        Window.Update(1, Status);
-    end;
-
-    [Scope('OnPrem')]
-    procedure CloseWindow()
-    begin
-        Window.Close;
     end;
 }

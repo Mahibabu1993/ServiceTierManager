@@ -58,6 +58,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Server Instance Path - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 269761521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field State - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 237762718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Version - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4160142679 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -158,15 +168,65 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control General - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 413250820 - Control 3149170790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Database Name field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Database Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 3515129596 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Database Server field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Database Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 2723988120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the NST Server field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control NST Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 2864570709 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Server Instance Name field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Service Instance Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 486105011 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Server Instance Path field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Service Instance Path - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 269761521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the State</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control State - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 237762718 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Version - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 3467357894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Deploy App action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action DeployApp - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 413250820 - Action 3467357894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deploy App</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action DeployApp - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 413250820 - Action 2839364610 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Import License action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action ImportLicense - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 413250820 - Action 2839364610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import License</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action ImportLicense - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 3808743301 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Restart Server Instance action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action RestartServerInstance - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 413250820 - Action 3808743301 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Restart Server Instance</source>
@@ -177,6 +237,46 @@
           <source>Database Instances</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 3149170790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Database Name field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Database Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 3515129596 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Database Server field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Database Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 2723988120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the NST Server field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control NST Server - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 2864570709 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Server Instance Name field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Service Instance Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 486105011 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Server Instance Path field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Service Instance Path - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 269761521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the State</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control State - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 237762718 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Version - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Action 2026913255 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Refresh Database Instances action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action Refresh - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3828933762 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh Database Instances</source>
@@ -193,25 +293,50 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 3887054550 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the App File Path field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control App File Path - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3752914723 - Control 3887054550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>App File Path</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control App File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 1977893707 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Existing Version field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Existing Version - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Control 1977893707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Existing Version</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Existing Version - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Name field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Name - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3752914723 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 249619100 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the SkipVerification field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control SkipVerification - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3752914723 - Control 249619100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SkipVerification</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control SkipVerification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 237762718 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Version field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Version - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Control 237762718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Version</source>
@@ -272,6 +397,11 @@
           <source>User Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control User Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1244911251 - Control 1239603467 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the GetDetailsText() field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PS Results - Control GetDetailsText - Property ToolTip</note>
         </trans-unit>
       </group>
     </body>

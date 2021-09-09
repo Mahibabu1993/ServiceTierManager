@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit Service Tier Management (ID 50103).
+/// </summary>
 codeunit 50103 "Service Tier Management"
 {
     trigger OnRun()
@@ -7,46 +10,23 @@ codeunit 50103 "Service Tier Management"
 
     var
         PSSession: Codeunit "PowerShell Runner";
-        Txt001: Label 'Operation cancelled by user.';
         AllFilesFilterTxt: Label '*.*';
         FileFilter: Label 'License (*.flf)|*.flf|All Files (*.*)|*.*';
+        Txt001: Label 'Operation cancelled by user.';
 
-    procedure UpdateDatabaseInstanceList()
-    var
-        DatabaseInstance: Record "Database Instance";
-        PSResults: DotNet PSObjectAdapter;
-        ServerInstanceName: Text[130];
-        ServerName: Text[100];
-    begin
-        ServerName := 'localhost';
-        DatabaseInstance.SetRange("NST Server", ServerName);
-        DatabaseInstance.DeleteAll();
-
-        PSSession.OpenWindow();
-        PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
-        PSSession.UpdateWindow('Get Server Instances');
-
-        PSSession.AddCommand('Get-NAVServerInstance');
-        if PSSession.InitializePSRunner() then
-            while PSSession.NextResult(PSResults) do begin
-                ServerInstanceName := PSResults.GetProperty('ServerInstance');
-                DatabaseInstance.Init();
-                DatabaseInstance."NST Server" := ServerName;
-                DatabaseInstance."Server Instance Name" := CopyStr(ServerInstanceName, 28, StrLen(ServerInstanceName));
-                DatabaseInstance.Insert(true);
-            end;
-        PSSession.CloseWindow();
-    end;
-
+    /// <summary>
+    /// ImportLicense.
+    /// </summary>
+    /// <param name="ServerInstance">Text[100].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure ImportLicense(ServerInstance: Text[100]): Boolean
     var
-        TempBlob: Codeunit "Temp Blob";
         FileMgt: Codeunit "File Management";
-        FileName: Text[500];
+        TempBlob: Codeunit "Temp Blob";
         [InDataSet]
         Imported: Boolean;
         PSResults: DotNet PSObjectAdapter;
+        FileName: Text[500];
     begin
         FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select License File', '', FileFilter, AllFilesFilterTxt);
 
@@ -76,6 +56,11 @@ codeunit 50103 "Service Tier Management"
         exit(Imported);
     end;
 
+    /// <summary>
+    /// RestartServerInstance.
+    /// </summary>
+    /// <param name="ServerInstance">Text[100].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure RestartServerInstance(ServerInstance: Text[100]): Boolean
     var
         ActiveSession: Record "Active Session";
@@ -97,5 +82,38 @@ codeunit 50103 "Service Tier Management"
             Restarted := PSSession.NextResult(PSResults);
         PSSession.CloseWindow();
         exit(Restarted);
+    end;
+
+    /// <summary>
+    /// UpdateDatabaseInstanceList.
+    /// </summary>
+    procedure UpdateDatabaseInstanceList()
+    var
+        DatabaseInstance: Record "Database Instance";
+        PSResults: DotNet PSObjectAdapter;
+        ServerName: Text[100];
+        ServerInstanceName: Text[130];
+    begin
+        ServerName := 'localhost';
+        DatabaseInstance.SetRange("NST Server", ServerName);
+        DatabaseInstance.DeleteAll();
+
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+        PSSession.ImportModule();
+        PSSession.UpdateWindow('Get Server Instances');
+
+        PSSession.AddCommand('Get-NAVServerInstance');
+        if PSSession.InitializePSRunner() then
+            while PSSession.NextResult(PSResults) do begin
+                ServerInstanceName := PSResults.GetProperty('ServerInstance');
+                DatabaseInstance.Init();
+                DatabaseInstance."NST Server" := ServerName;
+                DatabaseInstance."Server Instance Name" := CopyStr(ServerInstanceName, 28, StrLen(ServerInstanceName));
+                DatabaseInstance.State := PSResults.GetProperty('State');
+                DatabaseInstance.Version := PSResults.GetProperty('Version');
+                DatabaseInstance.Insert(true);
+            end;
+        PSSession.CloseWindow();
     end;
 }

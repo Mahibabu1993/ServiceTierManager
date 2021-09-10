@@ -1,3 +1,6 @@
+/// <summary>
+/// Page PS Results (ID 50104).
+/// </summary>
 page 50104 "PS Results"
 {
     PageType = CardPart;
@@ -11,14 +14,10 @@ page 50104 "PS Results"
             {
                 ApplicationArea = All;
                 MultiLine = true;
-                Width = 50;
                 ToolTip = 'Specifies the value of the GetDetailsText() field';
+                Width = 50;
             }
         }
-    }
-
-    actions
-    {
     }
 }
 

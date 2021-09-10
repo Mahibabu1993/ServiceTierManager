@@ -20,7 +20,7 @@ page 50101 "Database Instance Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the NST Server field';
                 }
-                field("Service Instance Name"; "Server Instance Name")
+                field("Server Instance Name"; "Server Instance Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Server Instance Name field';
@@ -35,7 +35,7 @@ page 50101 "Database Instance Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Version';
                 }
-                field("Service Instance Path"; "Server Instance Path")
+                field("Server Instance Path"; "Server Instance Path")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Server Instance Path field';
@@ -69,6 +69,8 @@ page 50101 "Database Instance Card"
                 ToolTip = 'Executes the Deploy App action';
 
                 trigger OnAction()
+                var
+                    AppManagement: Codeunit "App Management";
                 begin
                     AppManagement.ImportAppFileandDeploy("Server Instance Name");
                 end;
@@ -84,6 +86,8 @@ page 50101 "Database Instance Card"
                 ToolTip = 'Executes the Import License action';
 
                 trigger OnAction()
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     if ServiceTierManagement.ImportLicense("Server Instance Name") then
                         Message(ImportSuccessMsg)
@@ -102,6 +106,8 @@ page 50101 "Database Instance Card"
                 ToolTip = 'Executes the Restart Server Instance action';
 
                 trigger OnAction()
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     if not ServiceTierManagement.RestartServerInstance("Server Instance Name") then
                         Error(RestartErr, "Server Instance Name");
@@ -110,8 +116,6 @@ page 50101 "Database Instance Card"
         }
     }
     var
-        AppManagement: Codeunit "App Management";
-        ServiceTierManagement: Codeunit "Service Tier Management";
         ImportFailedErr: Label 'License Import Failed';
         ImportSuccessMsg: Label 'License Import Successful';
         RestartErr: Label 'Server Instance %1 cannot be restarted';

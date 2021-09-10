@@ -22,7 +22,7 @@ page 50100 "Database Instance List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the NST Server field';
                 }
-                field("Service Instance Name"; "Server Instance Name")
+                field("Server Instance Name"; "Server Instance Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Server Instance Name field';
@@ -48,16 +48,12 @@ page 50100 "Database Instance List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Database Name field';
                 }
-                field("Service Instance Path"; "Server Instance Path")
+                field("Server Instance Path"; "Server Instance Path")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Server Instance Path field';
                 }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
@@ -76,6 +72,8 @@ page 50100 "Database Instance List"
                 ToolTip = 'Executes the Refresh Database Instances action';
 
                 trigger OnAction();
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     ServiceTierManagement.UpdateDatabaseInstanceList();
                     CurrPage.Update();
@@ -83,6 +81,4 @@ page 50100 "Database Instance List"
             }
         }
     }
-    var
-        ServiceTierManagement: Codeunit "Service Tier Management";
 }

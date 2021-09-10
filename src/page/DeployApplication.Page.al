@@ -1,12 +1,15 @@
+/// <summary>
+/// Page Deploy Application (ID 50102).
+/// </summary>
 page 50102 "Deploy Application"
 {
     Caption = 'Deploy Application';
     DataCaptionExpression = '';
     DeleteAllowed = false;
     InsertAllowed = false;
-    InstructionalText = '';
-    SourceTable = Application;
+    InstructionalText = 'Please verify the below details and correct if required';
     PageType = ConfirmationDialog;
+    SourceTable = Application;
 
     layout
     {

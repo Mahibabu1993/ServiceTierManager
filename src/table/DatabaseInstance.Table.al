@@ -25,11 +25,10 @@ table 50100 "Database Instance"
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Server Instance Path"; Text[250])
+        field(5; "Server Instance Path"; Text[500])
         {
             DataClassification = ToBeClassified;
         }
-
         field(6; State; Text[20])
         {
             DataClassification = ToBeClassified;
@@ -39,6 +38,11 @@ table 50100 "Database Instance"
         {
             DataClassification = ToBeClassified;
             Editable = false;
+        }
+        field(8; "Web Client URL"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = URL;
         }
     }
 

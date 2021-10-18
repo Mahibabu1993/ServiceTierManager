@@ -16,7 +16,6 @@ dotnet
 
     assembly("mscorlib")
     {
-        Version = '4.0.0.0';
         Culture = 'neutral';
         PublicKeyToken = 'b77a5c561934e089';
 
@@ -29,6 +28,16 @@ dotnet
         }
 
         type("System.Version"; "Version")
+        {
+        }
+    }
+
+    assembly("System.Management.Automation")
+    {
+        Culture = 'neutral';
+        PublicKeyToken = '31bf3856ad364e35';
+
+        type("System.Management.Automation.PSObject"; "PSObject")
         {
         }
     }

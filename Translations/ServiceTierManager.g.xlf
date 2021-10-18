@@ -68,6 +68,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Version - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2990669072 - Field 9094878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Web Client URL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Database Instance - Field Web Client URL - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4160142679 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -98,20 +103,50 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Log - Field User Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 747043402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Ledger Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 747043402 - Field 2575460289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Password - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 747043402 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 747043402 - Field 3743370838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shared Folder Path</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Shared Folder Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 747043402 - Field 2384094325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use File Path for Deploment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Use File Path for Deploment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 747043402 - Field 3549826426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UserName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field UserName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 580524742 - NamedType 966007232" size-unit="char" translate="yes" xml:space="preserve">
           <source>*.*</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType AllFilesFilterTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 580524742 - NamedType 3944185561" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType AppFileFilter</note>
+        </trans-unit>
         <trans-unit id="Codeunit 580524742 - NamedType 3910898602" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import cancelled</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType CancelledErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 580524742 - NamedType 743971322" size-unit="char" translate="yes" xml:space="preserve">
-          <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType FileFilter</note>
         </trans-unit>
         <trans-unit id="Codeunit 580524742 - NamedType 3177175679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Server %1 already contains the application with name %2 and version %3</source>
@@ -133,15 +168,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType AllFilesFilterTxt</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2029123880 - NamedType 743971322" size-unit="char" translate="yes" xml:space="preserve">
-          <source>License (*.flf)|*.flf|All Files (*.*)|*.*</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType FileFilter</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2029123880 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2029123880 - NamedType 3910898602" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operation cancelled by user.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType Txt001</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType CancelledErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2029123880 - NamedType 4183719319" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License (*.flf)|*.flf|All Files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Service Tier Management - NamedType LicenseFileFilter</note>
         </trans-unit>
         <trans-unit id="Page 413250820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instance Card</source>
@@ -202,6 +237,11 @@
           <source>Specifies the value of the Version</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Version - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Control 9094878 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Web Client URL field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Web Client URL - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 413250820 - Action 3467357894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Deploy App action</source>
@@ -273,6 +313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Version - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3828933762 - Control 9094878 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the valie of the Web CLient URL field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Control Web Client URL - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3828933762 - Action 2026913255 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Refresh Database Instances action</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -282,6 +327,16 @@
           <source>Refresh Database Instances</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action Refresh - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Action 2451057450 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Update Database Details action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action UpdateDatabaseDetails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3828933762 - Action 2451057450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Database Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action UpdateDatabaseDetails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please verify the below details and correct if required</source>
@@ -397,6 +452,16 @@
           <source>User Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Log List - Control User Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 747043402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PowerShell Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 747043402 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PowerShell Setup - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1244911251 - Control 1239603467 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the GetDetailsText() field</source>

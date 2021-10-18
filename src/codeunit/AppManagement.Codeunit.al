@@ -13,7 +13,7 @@ codeunit 50101 "App Management"
         PSLogEntry: Record "PowerShell Log";
         PSSession: Codeunit "PowerShell Runner";
         AllFilesFilterTxt: Label '*.*';
-        FileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
+        AppFileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
         CancelledErr: Label 'Import cancelled';
         SameVersionErr: Label 'Server %1 already contains the application with name %2 and version %3';
 
@@ -24,16 +24,32 @@ codeunit 50101 "App Management"
     procedure ImportAppFileandDeploy(ServerInstance: Text[100])
     var
         FileMgt: Codeunit "File Management";
+        PowerShellSetup: Record "PowerShell Setup";
         TempBlob: Codeunit "Temp Blob";
+        [InDataSet]
+        DeleteFileonCompletion: Boolean;
         OldVersion: DotNet Version;
         Version: DotNet Version;
         FileName: Text[500];
     begin
-        FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', FileFilter, AllFilesFilterTxt);
+        PowerShellSetup.Get();
+        PowerShellSetup.TestField("Shared Folder Path");
 
-        if FileName = '' then begin
-            Error(CancelledErr);
-        end;
+        if not PowerShellSetup."Use File Path for Deploment" then begin
+            FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', AppFileFilter, AllFilesFilterTxt);
+
+            if FileName = '' then
+                Error(CancelledErr);
+
+            FileName := PowerShellSetup."Shared Folder Path" + FileName;
+
+            if Exists(FileName) then
+                Erase(FileName);
+
+            FileMgt.BLOBExportToServerFile(TempBlob, FileName);
+            DeleteFileonCompletion := true;
+        end else
+            FileName := PowerShellSetup."Shared Folder Path";
 
         InsertTempApplicationDetails(ServerInstance, FileName);
         if Page.RunModal(Page::"Deploy Application", TempApplication) = Action::Yes then begin
@@ -44,12 +60,6 @@ codeunit 50101 "App Management"
                     Error(SameVersionErr, ServerInstance, TempApplication.Name, TempApplication."Existing Version");
             end;
 
-            if Exists(TempApplication."App File Path") then begin
-                Erase(TempApplication."App File Path");
-            end;
-
-            FileMgt.BLOBExportToServerFile(TempBlob, TempApplication."App File Path");
-
             PublishNAVApp(ServerInstance, TempApplication."App File Path", TempApplication.SkipVerification);
             SyncNAVApp(ServerInstance, TempApplication.Name, TempApplication.Version, '');
             if TempApplication."Existing Version" <> '' then begin
@@ -58,6 +68,9 @@ codeunit 50101 "App Management"
             end else
                 InstallNAVApp(ServerInstance, TempApplication.Name, TempApplication.Version);
         end;
+        if DeleteFileonCompletion then
+            if Exists(FileName) then
+                Erase(FileName);
     end;
 
     local procedure FindOldVersion(ServerInstance: Text[100]; var Name: Text[100]; var Version: Text[50])
@@ -99,9 +112,16 @@ codeunit 50101 "App Management"
     local procedure InsertTempApplicationDetails(ServerInstance: Text[100]; FileName: Text[250])
     begin
         TempApplication.Init();
+        if FileName.Contains('\') then begin
+            TempApplication."App File Path" := CopyStr(FileName, 1, FileName.LastIndexOf('\'));
+            FileName := CopyStr(FileName, FileName.LastIndexOf('\') + 1, MaxStrLen(FileName));
+        end;
         FindPublisherNameVersion(FileName, TempApplication.Publisher, TempApplication.Name, TempApplication.Version);
         FindOldVersion(ServerInstance, TempApplication.Name, TempApplication."Existing Version");
-        TempApplication."App File Path" := TemporaryPath + FileName;
+        if TempApplication."App File Path" = '' then
+            TempApplication."App File Path" := TemporaryPath + FileName
+        else
+            TempApplication."App File Path" := TempApplication."App File Path" + FileName;
         TempApplication.Insert();
     end;
 

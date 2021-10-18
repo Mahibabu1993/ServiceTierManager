@@ -50,6 +50,11 @@ page 50101 "Database Instance Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Database Name field';
                 }
+                field("Web Client URL"; "Web Client URL")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Web Client URL field';
+                }
             }
         }
     }

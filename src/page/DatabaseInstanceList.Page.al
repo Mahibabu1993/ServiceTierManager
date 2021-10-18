@@ -27,7 +27,11 @@ page 50100 "Database Instance List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Server Instance Name field';
                 }
-
+                field("Web Client URL"; "Web Client URL")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the valie of the Web CLient URL field';
+                }
                 field(State; State)
                 {
                     ApplicationArea = All;
@@ -76,6 +80,25 @@ page 50100 "Database Instance List"
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     ServiceTierManagement.UpdateDatabaseInstanceList();
+                    CurrPage.Update();
+                end;
+            }
+
+            action(UpdateDatabaseDetails)
+            {
+                Caption = 'Update Database Details';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = UpdateDescription;
+                ToolTip = 'Executes the Update Database Details action';
+
+                trigger OnAction();
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
+                begin
+                    ServiceTierManagement.UpdateDatabaseDetails(Rec);
                     CurrPage.Update();
                 end;
             }

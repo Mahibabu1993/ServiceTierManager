@@ -26,10 +26,6 @@ page 50105 "PowerShell Setup"
                 {
                     ApplicationArea = All;
                 }
-                field("Use File Path for Deploment"; "Use File Path for Deploment")
-                {
-                    ApplicationArea = All;
-                }
                 field("Shared Folder Path"; "Shared Folder Path")
                 {
                     ApplicationArea = All;

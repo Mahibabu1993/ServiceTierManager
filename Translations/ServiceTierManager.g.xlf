@@ -8,6 +8,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field App File Path - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 2105496974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete File After Deployment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Delete File After Deployment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4181767958 - Field 1977893707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Existing Version</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18,10 +23,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Primary Key - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4181767958 - Field 1772640682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Publisher</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Publisher - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 1195136664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ServerInstance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field ServerInstance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4181767958 - Field 249619100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SkipVerification</source>
@@ -104,7 +119,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Log - Field User Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 747043402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General Ledger Setup</source>
+          <source>PowerShell Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Property Caption</note>
         </trans-unit>
@@ -123,30 +138,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Shared Folder Path - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 747043402 - Field 2384094325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Use File Path for Deploment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field Use File Path for Deploment - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 747043402 - Field 3549826426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UserName</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PowerShell Setup - Field UserName - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 580524742 - NamedType 966007232" size-unit="char" translate="yes" xml:space="preserve">
-          <source>*.*</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType AllFilesFilterTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 580524742 - NamedType 3944185561" size-unit="char" translate="yes" xml:space="preserve">
-          <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType AppFileFilter</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 580524742 - NamedType 3910898602" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import cancelled</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - NamedType CancelledErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 580524742 - NamedType 3177175679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Server %1 already contains the application with name %2 and version %3</source>
@@ -339,7 +334,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance List - Action UpdateDatabaseDetails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Please verify the below details and correct if required</source>
+          <source>Upload And Deploy Extension</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Property InstructionalText</note>
         </trans-unit>
@@ -348,15 +343,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3752914723 - NamedType 966007232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - NamedType AllFilesFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - NamedType 3944185561" size-unit="char" translate="yes" xml:space="preserve">
+          <source>App (*.app)|*.app|All Files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - NamedType AppFileFilter</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - NamedType 3910898602" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import cancelled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - NamedType CancelledErr</note>
+        </trans-unit>
         <trans-unit id="Page 3752914723 - Control 3887054550 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the App File Path field</source>
+          <source>Specifies the file path of the extension.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control App File Path - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Control 3887054550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>App File Path</source>
+          <source>Select .app file</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control App File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 2105496974 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Delete File After Deployment field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Delete File After Deployment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3752914723 - Control 2105496974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete File After Deployment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Deploy Application - Control Delete File After Deployment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3752914723 - Control 1977893707 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Existing Version field</source>

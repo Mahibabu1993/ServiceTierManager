@@ -3,7 +3,7 @@
 /// </summary>
 table 50103 "PowerShell Setup"
 {
-    Caption = 'General Ledger Setup';
+    Caption = 'PowerShell Setup';
     DataClassification = ToBeClassified;
 
     fields
@@ -21,11 +21,7 @@ table 50103 "PowerShell Setup"
             DataClassification = ToBeClassified;
             ExtendedDatatype = Masked;
         }
-        field(4; "Use File Path for Deploment"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(5; "Shared Folder Path"; Text[500])
+        field(4; "Shared Folder Path"; Text[500])
         {
             DataClassification = ToBeClassified;
         }

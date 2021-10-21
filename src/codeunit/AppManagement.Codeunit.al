@@ -12,9 +12,6 @@ codeunit 50101 "App Management"
         TempApplication: Record Application temporary;
         PSLogEntry: Record "PowerShell Log";
         PSSession: Codeunit "PowerShell Runner";
-        AllFilesFilterTxt: Label '*.*';
-        AppFileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
-        CancelledErr: Label 'Import cancelled';
         SameVersionErr: Label 'Server %1 already contains the application with name %2 and version %3';
 
     /// <summary>
@@ -23,35 +20,12 @@ codeunit 50101 "App Management"
     /// <param name="ServerInstance">Text[100].</param>
     procedure ImportAppFileandDeploy(ServerInstance: Text[100])
     var
-        FileMgt: Codeunit "File Management";
-        PowerShellSetup: Record "PowerShell Setup";
-        TempBlob: Codeunit "Temp Blob";
-        [InDataSet]
-        DeleteFileonCompletion: Boolean;
         OldVersion: DotNet Version;
         Version: DotNet Version;
-        FileName: Text[500];
     begin
-        PowerShellSetup.Get();
-        PowerShellSetup.TestField("Shared Folder Path");
-
-        if not PowerShellSetup."Use File Path for Deploment" then begin
-            FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', AppFileFilter, AllFilesFilterTxt);
-
-            if FileName = '' then
-                Error(CancelledErr);
-
-            FileName := PowerShellSetup."Shared Folder Path" + FileName;
-
-            if Exists(FileName) then
-                Erase(FileName);
-
-            FileMgt.BLOBExportToServerFile(TempBlob, FileName);
-            DeleteFileonCompletion := true;
-        end else
-            FileName := PowerShellSetup."Shared Folder Path";
-
-        InsertTempApplicationDetails(ServerInstance, FileName);
+        TempApplication.Init();
+        TempApplication.ServerInstance := ServerInstance;
+        TempApplication.Insert();
         if Page.RunModal(Page::"Deploy Application", TempApplication) = Action::Yes then begin
             if TempApplication."Existing Version" <> '' then begin
                 Version := Version.Version(TempApplication.Version);
@@ -68,9 +42,29 @@ codeunit 50101 "App Management"
             end else
                 InstallNAVApp(ServerInstance, TempApplication.Name, TempApplication.Version);
         end;
-        if DeleteFileonCompletion then
-            if Exists(FileName) then
-                Erase(FileName);
+        if TempApplication."Delete File After Deployment" then
+            if Exists(TempApplication."App File Path") then
+                Erase(TempApplication."App File Path");
+    end;
+
+    /// <summary>
+    /// ModifyTempApplication.
+    /// </summary>
+    /// <param name="ServerInstance">Text[100].</param>
+    /// <param name="TempApplication">VAR Record Application.</param>
+    procedure ModifyTempApplication(ServerInstance: Text[100]; var TempApplication: Record Application)
+    var
+        FilePath: Text[500];
+        FileName: Text[500];
+    begin
+        FileName := TempApplication."App File Path";
+        if FileName.Contains('\') then begin
+            FilePath := CopyStr(FileName, 1, FileName.LastIndexOf('\'));
+            FileName := CopyStr(FileName, FileName.LastIndexOf('\') + 1, MaxStrLen(FileName));
+        end;
+        FindPublisherNameVersion(FileName, TempApplication.Publisher, TempApplication.Name, TempApplication.Version);
+        FindOldVersion(ServerInstance, TempApplication.Name, TempApplication."Existing Version");
+        TempApplication.Modify();
     end;
 
     local procedure FindOldVersion(ServerInstance: Text[100]; var Name: Text[100]; var Version: Text[50])
@@ -107,22 +101,6 @@ codeunit 50101 "App Management"
         Name := CopyStr(FileName, 1, StrPos(FileName, '_') - 1);
         FileName := DelStr(FileName, 1, StrPos(FileName, '_'));
         Version := CopyStr(FileName, 1, StrPos(FileName, '.app') - 1);
-    end;
-
-    local procedure InsertTempApplicationDetails(ServerInstance: Text[100]; FileName: Text[250])
-    begin
-        TempApplication.Init();
-        if FileName.Contains('\') then begin
-            TempApplication."App File Path" := CopyStr(FileName, 1, FileName.LastIndexOf('\'));
-            FileName := CopyStr(FileName, FileName.LastIndexOf('\') + 1, MaxStrLen(FileName));
-        end;
-        FindPublisherNameVersion(FileName, TempApplication.Publisher, TempApplication.Name, TempApplication.Version);
-        FindOldVersion(ServerInstance, TempApplication.Name, TempApplication."Existing Version");
-        if TempApplication."App File Path" = '' then
-            TempApplication."App File Path" := TemporaryPath + FileName
-        else
-            TempApplication."App File Path" := TempApplication."App File Path" + FileName;
-        TempApplication.Insert();
     end;
 
     local procedure InstallNAVApp(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50])

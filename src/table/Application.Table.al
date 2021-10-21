@@ -7,27 +7,46 @@ table 50101 "Application"
 
     fields
     {
-        field(1; Publisher; Text[100])
+        field(1; "Primary Key"; code[10])
         {
             DataClassification = ToBeClassified;
         }
-        field(2; Name; Text[100])
+        field(2; Publisher; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(3; Version; Text[50])
+        field(3; Name; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(4; SkipVerification; Boolean)
+        field(4; Version; Text[50])
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Existing Version"; Text[50])
+        field(5; SkipVerification; Boolean)
         {
             DataClassification = ToBeClassified;
         }
-        field(6; "App File Path"; Text[250])
+        field(6; "Existing Version"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(7; "App File Path"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+
+            trigger OnValidate()
+            var
+                AppManagement: Codeunit "App Management";
+            begin
+                AppManagement.ModifyTempApplication(ServerInstance, Rec);
+            end;
+        }
+        field(8; "Delete File After Deployment"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(9; ServerInstance; Text[100])
         {
             DataClassification = ToBeClassified;
         }
@@ -35,29 +54,9 @@ table 50101 "Application"
 
     keys
     {
-        key(Key1; Publisher, Name)
+        key(Key1; "Primary Key")
         {
             Clustered = true;
         }
     }
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
 }

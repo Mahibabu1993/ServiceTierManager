@@ -7,7 +7,7 @@ page 50102 "Deploy Application"
     DataCaptionExpression = '';
     DeleteAllowed = false;
     InsertAllowed = false;
-    InstructionalText = 'Please verify the below details and correct if required';
+    InstructionalText = 'Upload And Deploy Extension';
     PageType = ConfirmationDialog;
     SourceTable = Application;
 
@@ -15,6 +15,34 @@ page 50102 "Deploy Application"
     {
         area(Content)
         {
+            field("App File Path"; "App File Path")
+            {
+                ApplicationArea = All;
+                Caption = 'Select .app file';
+                ToolTip = 'Specifies the file path of the extension.';
+
+                trigger OnAssistEdit()
+                var
+                    FileMgt: Codeunit "File Management";
+                    TempBlob: Codeunit "Temp Blob";
+                    PowerShellSetup: Record "PowerShell Setup";
+                    FileName: Text[500];
+                begin
+                    FileName := FileMgt.BLOBImportWithFilter(TempBlob, 'Select App File', '', AppFileFilter, AllFilesFilterTxt);
+                    if FileName = '' then
+                        Error(CancelledErr);
+                    if PowerShellSetup.Get() then begin
+                        PowerShellSetup.TestField("Shared Folder Path");
+                        FileName := PowerShellSetup."Shared Folder Path" + FileName;
+                    end else
+                        FileName := TemporaryPath + FileName;
+                    if Exists(FileName) then
+                        Erase(FileName);
+                    FileMgt.BLOBExportToServerFile(TempBlob, FileName);
+                    "Delete File After Deployment" := true;
+                    Validate("App File Path", FileName);
+                end;
+            }
             field(Name; Name)
             {
                 ApplicationArea = All;
@@ -33,18 +61,22 @@ page 50102 "Deploy Application"
                 Caption = 'SkipVerification';
                 ToolTip = 'Specifies the value of the SkipVerification field';
             }
+            field("Delete File After Deployment"; "Delete File After Deployment")
+            {
+                ApplicationArea = All;
+                Caption = 'Delete File After Deployment';
+                ToolTip = 'Specifies the value of the Delete File After Deployment field';
+            }
             field("Existing Version"; "Existing Version")
             {
                 ApplicationArea = All;
                 Caption = 'Existing Version';
                 ToolTip = 'Specifies the value of the Existing Version field';
             }
-            field("App File Path"; "App File Path")
-            {
-                ApplicationArea = All;
-                Caption = 'App File Path';
-                ToolTip = 'Specifies the value of the App File Path field';
-            }
         }
     }
+    var
+        AllFilesFilterTxt: Label '*.*';
+        AppFileFilter: Label 'App (*.app)|*.app|All Files (*.*)|*.*';
+        CancelledErr: Label 'Import cancelled';
 }

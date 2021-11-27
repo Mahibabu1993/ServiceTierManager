@@ -63,6 +63,23 @@ page 50101 "Database Instance Card"
     {
         area(Processing)
         {
+            action(AddUser)
+            {
+                ApplicationArea = All;
+                Caption = 'Add User';
+                Image = AddAction;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Executes the Add User action';
+
+                trigger OnAction()
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
+                begin
+                    ServiceTierManagement.AddUser("Server Instance Name");
+                end;
+            }
             action(DeployApp)
             {
                 ApplicationArea = All;

@@ -15,6 +15,37 @@ codeunit 50103 "Service Tier Management"
         CancelledErr: Label 'Operation cancelled by user.';
 
     /// <summary>
+    /// AddUser.
+    /// </summary>
+    /// <param name="ServerInstance">Text[100].</param>
+    /// <returns>Return value of type Boolean.</returns>
+    procedure AddUser(ServerInstance: Text[100]): Boolean
+    var
+        UserAdded: Boolean;
+        PSResults: DotNet PSObjectAdapter;
+    begin
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow('Initializing');
+        PSSession.ImportModule();
+        PSSession.UpdateWindow(StrSubstNo('Adding user %1 to %2', UserId, ServerInstance));
+
+        PSSession.AddCommand('New-NAVServerUser');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('WindowsAccount', UserId);
+        if PSSession.InitializePSRunner() then
+            UserAdded := PSSession.NextResult(PSResults);
+
+        PSSession.AddCommand('New-NAVServerUser');
+        PSSession.AddParameter('ServerInstance', ServerInstance);
+        PSSession.AddParameter('WindowsAccount', UserId);
+        PSSession.AddParameter('PermissionSetID', 'SUPER');
+        if PSSession.InitializePSRunner() then
+            UserAdded := PSSession.NextResult(PSResults);
+        PSSession.CloseWindow();
+        exit(UserAdded);
+    end;
+
+    /// <summary>
     /// ImportLicense.
     /// </summary>
     /// <param name="ServerInstance">Text[100].</param>

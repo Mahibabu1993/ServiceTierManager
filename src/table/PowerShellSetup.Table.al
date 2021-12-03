@@ -24,6 +24,13 @@ table 50103 "PowerShell Setup"
         field(4; "Shared Folder Path"; Text[500])
         {
             DataClassification = ToBeClassified;
+
+            trigger OnValidate()
+            begin
+                if "Shared Folder Path" <> '' then
+                    if CopyStr("Shared Folder Path", StrLen("Shared Folder Path"), 1) <> '\' then
+                        "Shared Folder Path" := "Shared Folder Path" + '\';
+            end;
         }
     }
 

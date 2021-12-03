@@ -135,6 +135,18 @@ page 50101 "Database Instance Card"
                         Error(RestartErr, "Server Instance Name");
                 end;
             }
+            action(UpdateServerInstancePath)
+            {
+                ApplicationArea = All;
+                Caption = 'Update Server Instance Path';
+                trigger OnAction()
+                var
+                    ServiceTierManagement: Codeunit "Service Tier Management";
+                begin
+                    "Server Instance Path" := ServiceTierManagement.GetServerInstancePath("Server Instance Name");
+                    //Modify();
+                end;
+            }
         }
     }
     var

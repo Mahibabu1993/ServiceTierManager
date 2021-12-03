@@ -79,7 +79,7 @@ page 50100 "Database Instance List"
                 var
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
-                    ServiceTierManagement.UpdateDatabaseInstanceList();
+                    ServiceTierManagement.UpdateDatabaseInstanceList('localhost');
                     CurrPage.Update();
                 end;
             }

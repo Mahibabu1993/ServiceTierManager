@@ -60,7 +60,7 @@ codeunit 50101 "App Management"
         FileName := TempApplication."App File Path";
         if FileName.Contains('\') then begin
             FilePath := CopyStr(FileName, 1, FileName.LastIndexOf('\'));
-            FileName := CopyStr(FileName, FileName.LastIndexOf('\') + 1, MaxStrLen(FileName));
+            FileName := CopyStr(FileName, FileName.LastIndexOf('\') + 1, StrLen(FileName));
         end;
         FindPublisherNameVersion(FileName, TempApplication.Publisher, TempApplication.Name, TempApplication.Version);
         FindOldVersion(ServerInstance, TempApplication.Name, TempApplication."Existing Version");

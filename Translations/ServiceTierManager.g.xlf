@@ -238,6 +238,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Control Web Client URL - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 413250820 - Action 1727724908 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Add User action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action AddUser - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 1727724908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action AddUser - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 413250820 - Action 3467357894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Deploy App action</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -267,6 +277,11 @@
           <source>Restart Server Instance</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action RestartServerInstance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 2881266652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Server Instance Path</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action UpdateServerInstancePath - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3828933762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instances</source>

@@ -141,10 +141,11 @@ codeunit 50103 "Service Tier Management"
     var
         DatabaseInstanceName: Text[100];
     begin
-        PSSession.OpenWindow();
-        PSSession.UpdateWindow(StrSubstNo('Updating Database Details for %1', DatabaseInstance."Server Instance Name"));
         DatabaseInstance."Server Instance Path" := GetServerInstancePath(DatabaseInstance."Server Instance Name");
         SetPSModulePath(DatabaseInstance."Server Instance Path" + 'NAVAdminTool.ps1');
+        Clear(PSSession);
+        PSSession.OpenWindow();
+        PSSession.UpdateWindow(StrSubstNo('Updating Database Details for %1', DatabaseInstance."Server Instance Name"));
         DatabaseInstance."Database Server" := GetDatabaseServer(DatabaseInstance."Server Instance Name");
         DatabaseInstanceName := GetDatabaseInstance(DatabaseInstance."Server Instance Name");
         if DatabaseInstanceName <> '' then

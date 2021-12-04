@@ -14,7 +14,6 @@ codeunit 50100 "PowerShell Runner"
         [InDataSet]
         Created: Boolean;
         ErrorEnumerator: DotNet IEnumerator_Of_T;
-        MgmtModule: Label 'NAVAdminTool.ps1';
         Window: Dialog;
 
     /// <summary>
@@ -63,11 +62,12 @@ codeunit 50100 "PowerShell Runner"
     /// <summary>
     /// ImportModule.
     /// </summary>
+    /// <param name="PSModule">Text.</param>
     [Scope('OnPrem')]
-    procedure ImportModule()
+    procedure ImportModule(PSModule: Text)
     begin
         CreatePSRunner();
-        PSRunner.ImportModule(PSModules());
+        PSRunner.ImportModule(PSModule);
     end;
 
     /// <summary>
@@ -132,16 +132,6 @@ codeunit 50100 "PowerShell Runner"
         Window.Open(
           'Running Powershell                \' +
           'Status #1##################################');
-    end;
-
-    /// <summary>
-    /// PSModules.
-    /// </summary>
-    /// <returns>Return value of type Text.</returns>
-    [Scope('OnPrem')]
-    procedure PSModules(): Text
-    begin
-        exit(ApplicationPath + MgmtModule);
     end;
 
     /// <summary>

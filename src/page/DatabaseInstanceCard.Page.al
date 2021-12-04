@@ -77,6 +77,7 @@ page 50101 "Database Instance Card"
                 var
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
+                    ServiceTierManagement.SetPSModulePath(Rec."Server Instance Path" + 'NAVAdminTool.ps1');
                     ServiceTierManagement.AddUser("Server Instance Name");
                 end;
             }
@@ -94,6 +95,7 @@ page 50101 "Database Instance Card"
                 var
                     AppManagement: Codeunit "App Management";
                 begin
+                    AppManagement.SetPSModulePath(Rec."Server Instance Path" + 'NAVAdminTool.ps1');
                     AppManagement.ImportAppFileandDeploy("Server Instance Name");
                 end;
             }
@@ -111,6 +113,7 @@ page 50101 "Database Instance Card"
                 var
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
+                    ServiceTierManagement.SetPSModulePath(Rec."Server Instance Path" + 'NAVAdminTool.ps1');
                     if ServiceTierManagement.ImportLicense("Server Instance Name") then
                         Message(ImportSuccessMsg)
                     else
@@ -131,20 +134,23 @@ page 50101 "Database Instance Card"
                 var
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
+                    ServiceTierManagement.SetPSModulePath(Rec."Server Instance Path" + 'NAVAdminTool.ps1');
                     if not ServiceTierManagement.RestartServerInstance("Server Instance Name") then
                         Error(RestartErr, "Server Instance Name");
                 end;
             }
-            action(UpdateServerInstancePath)
+            action(UpdateDatabaseDetails)
             {
                 ApplicationArea = All;
-                Caption = 'Update Server Instance Path';
+                Caption = 'Update Database Details';
+                Image = UpdateDescription;
+                ToolTip = 'Executes the Update Database Details action';
+
                 trigger OnAction()
                 var
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
-                    "Server Instance Path" := ServiceTierManagement.GetServerInstancePath("Server Instance Name");
-                    //Modify();
+                    ServiceTierManagement.UpdateDatabaseDetails(Rec);
                 end;
             }
         }

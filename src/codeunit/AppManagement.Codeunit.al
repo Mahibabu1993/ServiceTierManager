@@ -12,6 +12,7 @@ codeunit 50101 "App Management"
         TempApplication: Record Application temporary;
         PSLogEntry: Record "PowerShell Log";
         PSSession: Codeunit "PowerShell Runner";
+        PSModulePath: Text;
         SameVersionErr: Label 'Server %1 already contains the application with name %2 and version %3';
 
     /// <summary>
@@ -67,13 +68,22 @@ codeunit 50101 "App Management"
         TempApplication.Modify();
     end;
 
+    /// <summary>
+    /// SetPSModulePath.
+    /// </summary>
+    /// <param name="ModulePath">Text.</param>
+    procedure SetPSModulePath(ModulePath: Text)
+    begin
+        PSModulePath := ModulePath;
+    end;
+
     local procedure FindOldVersion(ServerInstance: Text[100]; var Name: Text[100]; var Version: Text[50])
     var
         PSResults: DotNet PSObjectAdapter;
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Fetching App Information');
 
         //Get Apps Information
@@ -107,7 +117,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Install App');
 
         //Install App
@@ -124,7 +134,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Publishing App');
 
         //Publish Application
@@ -149,11 +159,19 @@ codeunit 50101 "App Management"
             PSLogEntry.CreateErrorEntry(Command + ErrorMsg);
     end;
 
+    local procedure GetPSModulePath(): Text
+    begin
+        if Exists(PSModulePath) then
+            exit(PSModulePath)
+        else
+            exit(ApplicationPath + 'NAVAdminTool.ps1');
+    end;
+
     local procedure StartNAVAppDataUpgrade(ServerInstance: Text[100]; AppName: Text[100]; Version: Text[50])
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Start App Data Upgrade');
 
         //Start App Data Upgrade
@@ -170,7 +188,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Sync App');
 
         //Sync App
@@ -189,7 +207,7 @@ codeunit 50101 "App Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Unpublish App');
 
         //Unpublish App

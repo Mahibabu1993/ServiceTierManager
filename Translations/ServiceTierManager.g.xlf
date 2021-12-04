@@ -153,11 +153,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit App Management - Method RunPS - NamedType ErrorMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3506948987 - NamedType 826471483" size-unit="char" translate="yes" xml:space="preserve">
-          <source>NAVAdminTool.ps1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit PowerShell Runner - NamedType MgmtModule</note>
-        </trans-unit>
         <trans-unit id="Codeunit 2029123880 - NamedType 966007232" size-unit="char" translate="yes" xml:space="preserve">
           <source>*.*</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -278,10 +273,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action RestartServerInstance - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 413250820 - Action 2881266652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update Server Instance Path</source>
+        <trans-unit id="Page 413250820 - Action 2451057450 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Update Database Details action</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action UpdateServerInstancePath - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action UpdateDatabaseDetails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 413250820 - Action 2451057450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Database Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Database Instance Card - Action UpdateDatabaseDetails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3828933762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Instances</source>

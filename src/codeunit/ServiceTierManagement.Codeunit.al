@@ -10,6 +10,7 @@ codeunit 50103 "Service Tier Management"
 
     var
         PSSession: Codeunit "PowerShell Runner";
+        PSModulePath: Text;
         AllFilesFilterTxt: Label '*.*';
         LicenseFileFilter: Label 'License (*.flf)|*.flf|All Files (*.*)|*.*';
         CancelledErr: Label 'Operation cancelled by user.';
@@ -26,7 +27,7 @@ codeunit 50103 "Service Tier Management"
     begin
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow(StrSubstNo('Adding user %1 to %2', UserId, ServerInstance));
 
         PSSession.AddCommand('New-NAVServerUser');
@@ -43,28 +44,6 @@ codeunit 50103 "Service Tier Management"
             UserAdded := PSSession.NextResult(PSResults);
         PSSession.CloseWindow();
         exit(UserAdded);
-    end;
-
-    /// <summary>
-    /// GetServerInstancePath.
-    /// </summary>
-    /// <param name="ServerInstance">Text[100].</param>
-    /// <returns>Return value of type Text[500].</returns>
-    procedure GetServerInstancePath(ServerInstance: Text[100]): Text[500]
-    var
-        ServerInstancePath: Text;
-        PSResults: DotNet PSObjectAdapter;
-    begin
-        PSSession.AddCommand('Get-WmiObject');
-        PSSession.AddParameter('Query', StrSubstNo('select PathName from win32_service where Name = "MicrosoftDynamicsNAVServer$%1"', ServerInstance));
-        if PSSession.InitializePSRunner() then
-            if PSSession.NextResult(PSResults) then begin
-                ServerInstancePath := PSResults.GetProperty('PathName');
-            end;
-        if ServerInstancePath = '' then
-            exit('');
-        ServerInstancePath := CopyStr(ServerInstancePath, 2, ServerInstancePath.IndexOf('Microsoft.Dynamics.Nav.Server.exe') - 2);
-        exit(ServerInstancePath);
     end;
 
     /// <summary>
@@ -102,7 +81,7 @@ codeunit 50103 "Service Tier Management"
 
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow('Import License');
 
         PSSession.AddCommand('Import-NAVServerLicense');
@@ -134,7 +113,7 @@ codeunit 50103 "Service Tier Management"
 
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow(StrSubstNo('Restart Server Instance %1', ServerInstance));
 
         PSSession.AddCommand('Restart-NAVServerInstance');
@@ -143,6 +122,15 @@ codeunit 50103 "Service Tier Management"
             Restarted := PSSession.NextResult(PSResults);
         PSSession.CloseWindow();
         exit(Restarted);
+    end;
+
+    /// <summary>
+    /// SetPSModulePath.
+    /// </summary>
+    /// <param name="ModulePath">Text.</param>
+    procedure SetPSModulePath(ModulePath: Text)
+    begin
+        PSModulePath := ModulePath;
     end;
 
     /// <summary>
@@ -156,10 +144,11 @@ codeunit 50103 "Service Tier Management"
         PSSession.OpenWindow();
         PSSession.UpdateWindow(StrSubstNo('Updating Database Details for %1', DatabaseInstance."Server Instance Name"));
         DatabaseInstance."Server Instance Path" := GetServerInstancePath(DatabaseInstance."Server Instance Name");
+        SetPSModulePath(DatabaseInstance."Server Instance Path" + 'NAVAdminTool.ps1');
         DatabaseInstance."Database Server" := GetDatabaseServer(DatabaseInstance."Server Instance Name");
         DatabaseInstanceName := GetDatabaseInstance(DatabaseInstance."Server Instance Name");
         if DatabaseInstanceName <> '' then
-            DatabaseInstance."Database Server" := DatabaseInstance."Database Server" + DatabaseInstanceName;
+            DatabaseInstance."Database Server" := DatabaseInstance."Database Server" + '\' + DatabaseInstanceName;
         DatabaseInstance."Database Name" := GetDatabaseName(DatabaseInstance."Server Instance Name");
         DatabaseInstance."Web Client URL" := GetWebClientURL(DatabaseInstance."Server Instance Name");
         DatabaseInstance.Modify(true);
@@ -184,7 +173,7 @@ codeunit 50103 "Service Tier Management"
 
         PSSession.OpenWindow();
         PSSession.UpdateWindow('Initializing');
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.UpdateWindow(StrSubstNo('Get Server Instances from %1', ServerName));
 
         PSSession.AddCommand('Get-NAVServerInstance');
@@ -212,7 +201,7 @@ codeunit 50103 "Service Tier Management"
         PSResult: DotNet PSObject;
         DatabaseName: Text[100];
     begin
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.AddCommand('Get-NAVServerConfiguration');
         PSSession.AddParameter('ServerInstance', ServerInstance);
         PSSession.AddParameter('KeyName', 'DatabaseServer');
@@ -228,7 +217,7 @@ codeunit 50103 "Service Tier Management"
         PSResults: DotNet PSObjectAdapter;
         PSResult: DotNet PSObject;
     begin
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.AddCommand('Get-NAVServerConfiguration');
         PSSession.AddParameter('ServerInstance', ServerInstance);
         PSSession.AddParameter('KeyName', 'DatabaseInstance');
@@ -245,7 +234,7 @@ codeunit 50103 "Service Tier Management"
         PSResult: DotNet PSObject;
         DatabaseName: Text[100];
     begin
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.AddCommand('Get-NAVServerConfiguration');
         PSSession.AddParameter('ServerInstance', ServerInstance);
         PSSession.AddParameter('KeyName', 'DatabaseName');
@@ -256,13 +245,38 @@ codeunit 50103 "Service Tier Management"
             end;
     end;
 
+    local procedure GetPSModulePath(): Text
+    begin
+        if Exists(PSModulePath) then
+            exit(PSModulePath)
+        else
+            exit(ApplicationPath + 'NAVAdminTool.ps1');
+    end;
+
+    local procedure GetServerInstancePath(ServerInstance: Text[100]): Text[500]
+    var
+        ServerInstancePath: Text;
+        PSResults: DotNet PSObjectAdapter;
+    begin
+        PSSession.AddCommand('Get-WmiObject');
+        PSSession.AddParameter('Query', StrSubstNo('select PathName from win32_service where Name = "MicrosoftDynamicsNAVServer$%1"', ServerInstance));
+        if PSSession.InitializePSRunner() then
+            if PSSession.NextResult(PSResults) then begin
+                ServerInstancePath := PSResults.GetProperty('PathName');
+            end;
+        if ServerInstancePath = '' then
+            exit('');
+        ServerInstancePath := CopyStr(ServerInstancePath, 2, ServerInstancePath.IndexOf('Microsoft.Dynamics.Nav.Server.exe') - 2);
+        exit(ServerInstancePath);
+    end;
+
     local procedure GetWebClientURL(ServerInstance: Text[100]): Text[500]
     var
         PSResults: DotNet PSObjectAdapter;
         PSResult: DotNet PSObject;
         DatabaseName: Text[100];
     begin
-        PSSession.ImportModule();
+        PSSession.ImportModule(GetPSModulePath());
         PSSession.AddCommand('Get-NAVServerConfiguration');
         PSSession.AddParameter('ServerInstance', ServerInstance);
         PSSession.AddParameter('KeyName', 'PublicWebBaseUrl');

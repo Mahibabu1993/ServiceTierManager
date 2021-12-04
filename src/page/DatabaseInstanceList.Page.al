@@ -80,7 +80,6 @@ page 50100 "Database Instance List"
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     ServiceTierManagement.UpdateDatabaseInstanceList('localhost');
-                    CurrPage.Update();
                 end;
             }
 
@@ -99,7 +98,6 @@ page 50100 "Database Instance List"
                     ServiceTierManagement: Codeunit "Service Tier Management";
                 begin
                     ServiceTierManagement.UpdateDatabaseDetails(Rec);
-                    CurrPage.Update();
                 end;
             }
         }

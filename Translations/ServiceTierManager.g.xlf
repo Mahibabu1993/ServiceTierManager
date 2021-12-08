@@ -23,6 +23,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4181767958 - Field 3999828514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Powershell Module Path</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Application - Field Powershell Module Path - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4181767958 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>

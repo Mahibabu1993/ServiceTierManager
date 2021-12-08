@@ -39,6 +39,7 @@ table 50101 "Application"
             var
                 AppManagement: Codeunit "App Management";
             begin
+                AppManagement.SetPSModulePath(Rec."Powershell Module Path");
                 AppManagement.ModifyTempApplication(ServerInstance, Rec);
             end;
         }
@@ -47,6 +48,10 @@ table 50101 "Application"
             DataClassification = ToBeClassified;
         }
         field(9; ServerInstance; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(10; "Powershell Module Path"; Text[500])
         {
             DataClassification = ToBeClassified;
         }

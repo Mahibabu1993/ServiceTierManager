@@ -26,6 +26,7 @@ codeunit 50101 "App Management"
     begin
         TempApplication.Init();
         TempApplication.ServerInstance := ServerInstance;
+        TempApplication."Powershell Module Path" := PSModulePath;
         TempApplication.Insert();
         if Page.RunModal(Page::"Deploy Application", TempApplication) = Action::Yes then begin
             if TempApplication."Existing Version" <> '' then begin
